@@ -1,0 +1,104 @@
+@import url(https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700|Open+Sans:400,300,600);
+
+body {
+    font-family: 'open sans';
+    background-color: rgb(65, 65, 65);
+    color:rgb(240, 240, 240);
+}
+
+input, select {
+    padding: 12px 20px;
+    margin: 0px 0;
+    display: inline-block;
+    border: 2px solid rgb(18, 73, 18);
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin-left: 10px;
+    margin-right: 10px;
+    width: 100%;
+}
+
+
+.backgroundImage {
+    background-image: gray;
+    font-size: 15px;
+}
+
+.HiddenDiv{
+    background: rgb(95, 95, 95);
+    color: rgb(255, 255, 255);
+    //white-space:nowrap;
+}
+
+.container {
+  margin: auto;
+  width: 25%;
+  height: 50%;
+  background-color: rgb(41, 41, 41);
+  padding: 5px;
+  border-radius: 10px;
+  overflow: auto;
+  position: absolute;
+  top: 0; left: 0; bottom: 0; right: 0;
+  opacity: 0.85;
+}
+
+.textCentered {
+  text-align: center;
+  line-height: 1.5;
+  vertical-align: middle;
+}
+
+.content {
+    padding-top: 20px;
+    margin: auto;
+}
+
+.row{
+    display: flex;
+    justify-content: space-around;
+    padding: 15px;
+}
+
+.rowButton{
+    display: flex;
+    justify-content: space-around;
+    padding: 5px;
+    margin-top: 20px;
+    }
+
+.noLink{
+    color: black;
+    text-decoration: none;
+}
+
+.buttonBack{
+    background: #f2709c;
+    background: -webkit-linear-gradient(to left, #ff9472, #f2709c);
+    background: linear-gradient(to left, #ff9472, #f2709c);
+    padding: 0.5rem 1rem;
+    border-radius: 0.8rem;
+    border: transparent;
+    cursor: pointer;
+    font-size: 20px;
+
+    &:hover{
+        filter: brightness(110%);
+    }
+}
+
+.buttonRegister{
+    background: #11998e;
+    background: -webkit-linear-gradient(to right, #38ef7d, #11998e);
+    background: linear-gradient(to right, #38ef7d, #11998e);
+    padding: 0.7rem 2rem;
+    border-radius: 0.8rem;
+    border: transparent;
+    cursor: pointer;
+    font-size: 20px;
+    
+    &:hover{
+        filter: brightness(110%);
+    }
+}
+
