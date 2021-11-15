@@ -1,7 +1,9 @@
 import * as React from "react"
 import Header from '../components/Header'
 import Recent from '../components/Recent'
-import { backgroundColor } from "../styles/index.module.scss";
+import Ocurrency from '../components/Ocurrency'
+import Footer from '../components/Footer'
+import { backgroundColor, container } from "../styles/index.module.scss";
 // markup
 const IndexPage = ({ pageTitle }) => {
   return (
@@ -11,7 +13,11 @@ const IndexPage = ({ pageTitle }) => {
           pageTitle='Site Home'
         />
         <title>{pageTitle}</title>
-        <Recent />
+        <table className={container}>
+          <Recent />
+          <Ocurrency />
+          <Footer />
+        </table>
       </div>
     </main>
   )

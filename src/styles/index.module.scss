@@ -1,8 +1,30 @@
 @import url(https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700|Open+Sans:400,300,600);
 
-body {
+* {
+    margin: 0;
+}
+
+
+html, body {
     font-family: 'open sans';
     color:rgb(55, 105, 199);
+    height: 100%;
+}
+
+table {
+    border-spacing: 0;
+}
+
+.container {
+    font-family: sans-serif;
+    background-color: rgb(245, 245, 245);
+    font-size: 20px;
+    width: 74%;
+    height: 17%;
+    position: absolute;
+    text-align: center;
+    top: 25%; left: 0; right: 0;
+    margin-left: 13%;
 }
 
 .backgroundColor {
