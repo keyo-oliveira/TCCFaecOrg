@@ -18,6 +18,7 @@ li {
 }
 
 h2 {
+    margin-top: 2%;
     margin-bottom: 2%;
 }
 
@@ -35,6 +36,7 @@ h2 {
 }
 
 .component {
+    margin: 0;
 }
 
 .recentOcurrency1 {
@@ -42,6 +44,10 @@ h2 {
     border: 1px solid black;
     border-radius: 20px;
     margin-right: 10px;
+
+    p {
+        margin-bottom: 10px;
+    }
 }
 
 .recentOcurrency2 {
@@ -50,6 +56,10 @@ h2 {
     border-radius: 20px;
     margin-left: 10px;
     margin-right: 10px;
+    
+    p {
+        margin-bottom: 10px;
+    }
 }
 
 .recentOcurrency3 {
@@ -57,4 +67,24 @@ h2 {
     border: 1px solid black;
     border-radius: 20px;
     margin-left: 10px;
+
+    p {
+        margin-bottom: 10px;
+    }
+}
+
+.hrStyle {
+    width: 80%;
+    margin-left: 10%;
+}
+
+.recOcurrencyStyle {
+    text-align: justify; 
+    margin-left: 13%;
+    padding: 10px;
+    color: black;
+}
+
+.details {
+    font-size: 12px;
 }
