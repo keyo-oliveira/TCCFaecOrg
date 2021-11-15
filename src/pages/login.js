@@ -10,7 +10,7 @@ import {
   buttonRegister,
 } from "../styles/login.module.scss";
 
-const LoginPage = ({ pageTitle }) => {
+  const LoginPage = ({ pageTitle }) => {
   const { register, handleSubmit } = useForm();
   const onSubmit = (data) => console.log(data);
 

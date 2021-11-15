@@ -1,0 +1,55 @@
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+  
+li {
+    display: inline-block;
+    width: 50%;
+}
+  
+@media screen and (min-width: 20em) {
+
+    li {
+        width: 33.33333%;
+    }
+
+}
+
+.container {
+    font-family: sans-serif;
+    background-color: white;
+    font-size: 20px;
+    width: 80%;
+    height: 17%;
+    position: absolute;
+    text-align: center;
+    top: 25%; left: 0; right: 0;
+    margin-left: 10%;
+}
+
+.component {
+}
+
+.recentOcurrency1 {
+    background-color: white;
+    border: 1px solid black;
+    border-radius: 20px;
+    margin-right: 10px;
+}
+
+.recentOcurrency2 {
+    background-color: white;
+    border: 1px solid black;
+    border-radius: 20px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.recentOcurrency3 {
+    background-color: white;
+    border: 1px solid black;
+    border-radius: 20px;
+    margin-left: 10px;
+}
