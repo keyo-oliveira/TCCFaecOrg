@@ -1,15 +1,12 @@
 import * as React from "react";
-import { Link } from "gatsby";
 import { useForm } from "react-hook-form";
 import {
   container,
   textCentered,
-  backgroundImage,
+  backgroundColor,
   content,
   row,
   rowButton,
-  noLink,
-  buttonBack,
   buttonRegister,
 } from "../styles/login.module.scss";
 
@@ -19,7 +16,7 @@ const LoginPage = ({ pageTitle }) => {
 
   return (
     <main>
-      <div className={backgroundImage}>
+      <div className={backgroundColor}>
         <title>{pageTitle}</title>
         <div className={container}>
           <div className={textCentered}>
@@ -44,11 +41,6 @@ const LoginPage = ({ pageTitle }) => {
               </div>
               <hr />
               <div className={rowButton}>
-                <button className={buttonBack} type="submit">
-                  <Link className={noLink} to="/">
-                    Voltar
-                  </Link>
-                </button>
                 <input className={buttonRegister} type="submit" />
               </div>
             </form>
