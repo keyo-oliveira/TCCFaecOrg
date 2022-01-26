@@ -15,11 +15,20 @@
     "clean": "gatsby clean"
   },
   "dependencies": {
+    "@types/node": "^17.0.12",
+    "@types/react": "^17.0.38",
+    "@types/react-dom": "^17.0.11",
     "gatsby": "^4.1.0",
     "gatsby-plugin-sass": "^5.1.0",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-hook-form": "^7.19.1",
-    "sass": "^1.43.4"
+    "sass": "^1.43.4",
+    "typescript": "^4.5.5"
+  },
+  "devDependencies": {
+    "eslint": "^8.7.0",
+    "eslint-plugin-react": "^7.28.0",
+    "prettier": "^2.5.1"
   }
 }
