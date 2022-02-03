@@ -1,12 +1,17 @@
 import * as React from "react";
 import { Link } from "gatsby";
 import { useForm } from "react-hook-form";
+import { useLogin } from "../../contexts/loginContext";
+
 import "./styles.scss";
 
 // eslint-disable-next-line react/prop-types
-const Login = ({ pageTitle }) => {
+const LoginComponent = ({ pageTitle }) => {
   const { register, handleSubmit } = useForm();
-  const onSubmit = (data) => console.log(data);
+  const { login } = useLogin();
+  const onSubmit = (data) => {
+    login(data);
+  };
 
   return (
     <main className="login__main">
@@ -35,7 +40,11 @@ const Login = ({ pageTitle }) => {
             />
             <div className="login__register-container">
               <span>Não tem cadastro?</span>
-              <Link className="login__register-button" type="submit" to="/register">
+              <Link
+                className="login__register-button"
+                type="submit"
+                to="/register"
+              >
                 Cadastre-se aqui
               </Link>
             </div>
@@ -46,4 +55,4 @@ const Login = ({ pageTitle }) => {
   );
 };
 
-export default Login;
+export default LoginComponent;

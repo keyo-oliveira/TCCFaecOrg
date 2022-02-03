@@ -1,7 +1,7 @@
 import * as React from "react";
 import { Link } from "gatsby";
 import Modal from "../Modal";
-import Login from "../Login";
+import LoginComponent from "../Login";
 import {
   container,
   heading,
@@ -23,7 +23,7 @@ const Header = ({ pageTitle, pageHeading, children }) => {
             </Link>
           </li>
           <li className={navRight}>
-            <Modal buttonText={'login'} content={<Login />} />
+            <Modal buttonText={'login'} content={<LoginComponent />} />
           </li>
         </ul>
       </nav>
