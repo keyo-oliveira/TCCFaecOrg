@@ -23,7 +23,7 @@ const Header = ({ pageTitle, pageHeading, children }) => {
             </Link>
           </li>
           <li className={navRight}>
-            <Modal content={<Login />} />
+            <Modal buttonText={'login'} content={<Login />} />
           </li>
         </ul>
       </nav>

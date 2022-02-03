@@ -18,12 +18,14 @@
     padding: 5px;
     border-radius: 10px;
     overflow: auto;
-    position: absolute;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    opacity: 0.9;
+    position: relative;
+   
+    .modal__header{
+      padding: 0 20px;
+    }
+    .modal__content {
+      padding: 20px;
+    }
   }
 
   .modal__close {
@@ -35,7 +37,28 @@
     font-size: 20px;
     margin: 10px;
     z-index: 99;
-    position: absolute;
     right: 0;
   }
+}
+.modal__open-button {
+  width: 80px;
+  height: 40px;
+  background-color: gray;
+  border-radius: 5px;
+  color: white;
+  border: 1px solid black;
+  padding: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  &:hover {
+    background-color: black;
+  }
+}
+
+.login-modal {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
 }

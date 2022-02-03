@@ -2,17 +2,6 @@ import * as React from "react";
 import { Link } from "gatsby";
 import { useForm } from "react-hook-form";
 import "./styles.scss";
-import {
-  container,
-  textCentered,
-  backgroundImage,
-  content,
-  registerLink,
-  row,
-  rowButton,
-  textLeft,
-  buttonRegister,
-} from "../../styles/register.module.scss";
 
 // eslint-disable-next-line react/prop-types
 const Login = ({ pageTitle }) => {
@@ -20,51 +9,37 @@ const Login = ({ pageTitle }) => {
   const onSubmit = (data) => console.log(data);
 
   return (
-    <main>
-      <div className={backgroundImage}>
-        <title>{pageTitle}</title>
-        <div className={container}>
-          <div className={textCentered}>
-            <p style={{ fontSize: "16px" }}>Login</p>
-          </div>
-          <hr />
-          <div className={content}>
-            <form onSubmit={handleSubmit(onSubmit)}>
-              <div className={row}>
-                <input
-                  type="string"
-                  placeholder="Usuário"
-                  {...register("username", { required: true, maxLength: 30 })}
-                />
-              </div>
-              <div className={row}>
-                <input
-                  type="password"
-                  placeholder="Senha"
-                  {...register("password", { required: true, maxLength: 20 })}
-                />
-              </div>
-              <hr />
-              <div className={rowButton}>
-                {/* <button className={buttonBack} type="submit">
-                  <Link className={noLink} to="/register">
-                    Registrar
-                  </Link>
-                </button>*/}
-                <input
-                  className={buttonRegister}
-                  type="submit"
-                  value="Entrar"
-                />
-              </div>
-              <div className={textLeft}>
-                <h2>Não tem cadastro?</h2>
-                <Link className={registerLink} type="submit" to="/register">
-                  Cadastre-se aqui
-                </Link>
-              </div>
-            </form>
-          </div>
+    <main className="login__main">
+      <div className="login__container">
+        <div className="login__header">
+          <span className="login__header-title">Login</span>
+        </div>
+        <div>
+          <form className="login__form" onSubmit={handleSubmit(onSubmit)}>
+            <input
+              className="login__input"
+              type="string"
+              placeholder="Usuário"
+              {...register("username", { required: true, maxLength: 30 })}
+            />
+            <input
+              className="login__input"
+              type="password"
+              placeholder="Senha"
+              {...register("password", { required: true, maxLength: 20 })}
+            />
+            <input
+              className="login__submit-button"
+              type="submit"
+              value="Entrar"
+            />
+            <div className="login__register-container">
+              <span>Não tem cadastro?</span>
+              <Link className="login__register-button" type="submit" to="/register">
+                Cadastre-se aqui
+              </Link>
+            </div>
+          </form>
         </div>
       </div>
     </main>

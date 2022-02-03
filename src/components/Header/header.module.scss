@@ -9,23 +9,34 @@
     color: rebeccapurple;
 }
 
+.modalOpenButton { 
+    height: 20px;
+    width: 40px;
+    color: wheat;
+    background-color: black;
+}
+
 .nav-links {
     display: flex;
-    list-style: none;
-    //background-color: rgb(145, 68, 68);
-    background-color: rgb(71, 118, 206);
-    padding: 10px 10px;
+    justify-content: center;
+    align-items: center;
+    list-style: none;    
+    background-color: rgb(26, 83, 3);
 }
 
 .nav-link-item {
+    border: 1px solid black;
     padding: 1rem 1rem;
-    margin-left: 5%;
-    margin-top: 1.5%;
+    margin: 15px;
     font-size: 40px;
+    background-color: gray;
+    &:hover {
+        background-color: black;
+    }
 }
 
 .nav-link-text {
-    color: black;
+    color: white;
     text-decoration: none;
 }
 

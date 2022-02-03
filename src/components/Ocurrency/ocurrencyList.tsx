@@ -1,15 +1,21 @@
- import React from 'react';
- 
- // import { Container } from './styles';
- 
- function Ocurrency() {
-   return(
-       <aside>
-           <div className='ocurrency-list__container'>
-                
-           </div>
-       </aside>
-    )
- }
- 
- export default Ocurrency;
+import React, { FC, useEffect } from "react";
+import Ocurrencies from ".";
+import { getOcurrencys } from "../../services/ocurrency";
+
+// import { Container } from './styles';
+
+const OcurrencyList: FC<OcurrencyList> = () => {
+  const ocurrencys = useEffect(() => {
+    getOcurrencys();
+  }, []);
+
+  return (
+    <aside>
+      {/* {ocurrencys.map((ocurrency: Ocurrency) => {
+        <Ocurrencies data={{ ...ocurrency }} />;
+      })} */}
+    </aside>
+  );
+};
+
+export default OcurrencyList;

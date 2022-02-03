@@ -1,0 +1,11 @@
+.side-bar__container {
+    position: fixed;
+    right: 0;
+    height: 100%;
+    width: 30%;
+    background-color: gray;
+    opacity: 50%;
+    &:hover{
+        opacity: 75%;
+    }
+}
