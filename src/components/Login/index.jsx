@@ -2,15 +2,21 @@ import * as React from "react";
 import { Link } from "gatsby";
 import { useForm } from "react-hook-form";
 import { useLogin } from "../../contexts/loginContext";
+import { navigate } from "gatsby"
+
 
 import "./styles.scss";
 
 // eslint-disable-next-line react/prop-types
-const LoginComponent = ({ pageTitle }) => {
+const Login = ({ pageTitle }) => {
   const { register, handleSubmit } = useForm();
-  const { login } = useLogin();
+  const { login, isLoggedIn } = useLogin();
   const onSubmit = (data) => {
     login(data);
+    if(!isLoggedIn) {
+      navigate('/')
+    }
+    navigate('/home')
   };
 
   return (
@@ -55,4 +61,4 @@ const LoginComponent = ({ pageTitle }) => {
   );
 };
 
-export default LoginComponent;
+export default Login;
