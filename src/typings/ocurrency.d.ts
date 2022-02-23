@@ -10,8 +10,8 @@ interface Ocurrency {
   Longitude: string;
   Latitude: string;
   AnswerDate: string;
-  Caller: pick<NaturalPerson, Name>;
-  AnsweredBy: pick<PublicAgent, Organization>;
+  Caller: partial<NaturalPerson>;
+  AnsweredBy: partial<PublicAgent>;
   OcurrencyType: string;
   ManyEnvolved: number;
   Victims: number;

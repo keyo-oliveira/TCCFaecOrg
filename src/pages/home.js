@@ -1,7 +1,9 @@
 import React from "react";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
-import {LoginContextProvider} from "../../src/contexts/loginContext";
+import SideBar from "../components/SideBar";
+import OcurrencyList from "../components/OcurrencyList";
+import { LoginContextProvider } from "../contexts/loginContext";
 
 const HomePage = ({ children }) => {
   return (
@@ -12,7 +14,9 @@ const HomePage = ({ children }) => {
           <div className={"container"}>
             {" "}
             <title>{"home"}</title>
-            {children}
+            <SideBar>
+              <OcurrencyList />
+            </SideBar>
           </div>
           <Footer />
         </main>
