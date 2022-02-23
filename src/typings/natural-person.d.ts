@@ -1,4 +1,5 @@
 /* eslint-disable no-unused-vars */
+
 interface NaturalPerson {
   Name: string;
   Cpf: string;

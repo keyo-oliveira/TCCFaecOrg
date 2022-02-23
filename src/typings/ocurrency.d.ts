@@ -7,12 +7,11 @@ interface OcurrencyList {
 interface Ocurrency {
   OcurrencyId: number;
   GenerationDate: string;
-  Location: string;
   Longitude: string;
   Latitude: string;
   AnswerDate: string;
-  Caller: NaturalPerson;
-  AnsweredBy: PublicAgent;
+  Caller: pick<NaturalPerson, Name>;
+  AnsweredBy: pick<PublicAgent, Organization>;
   OcurrencyType: string;
   ManyEnvolved: number;
   Victims: number;
@@ -23,6 +22,6 @@ interface Ocurrency {
   Number: string;
   Neighborhood: string;
   Complement: string;
-  Dangerous: ["low", "medium", "high", "urgent"];
-  Urgency: ["low", "medium", "high", "urgent"];
+  Dangerous: "low" | "medium" | "high" | "urgent";
+  Urgency: "low" | "medium" | "high" | "urgent";
 }
