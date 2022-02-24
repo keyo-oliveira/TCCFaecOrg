@@ -1,28 +1,35 @@
 .side-bar__container {
-    display: flex;
-    position: fixed;
-    right: 0;
-    top: 0;
-    height: 100%;
-    width: 30%;
-    background-color: gray;
-    opacity: 75%;
-    &:hover{
-        opacity: 100%;
-    }
+  display: flex;
+  position: fixed;
+  right: 0;
+  top: 0;
+  height: 100%;
+  width: 30%;
+  background-color: gray;
+  opacity: 75%;
+  z-index: 999;
+  &:hover {
+    opacity: 100%;
+  }
+  & nav {
+    width: 100%;
+    overflow-y: auto;
+  }
 }
 
-
 .side-bar__open-button {
-    position: fixed;
-    right: 0;
-    margin: 0 10px;
-    min-width: 50px;
-    min-height: 50px;
-    background-color: green;
-    opacity: 50%
+  position: fixed;
+  right: 0;
+  margin: 0 10px;
+  min-width: 50px;
+  min-height: 50px;
+  border-radius: 15px;
+  color: black;
+  background-color: rgba(170, 180, 173, 0.384);
+  opacity: 50%;
+  -webkit-appearance: none;
 }
 
 .side-bar_close-button {
-    align-self: flex-end;
+  align-self: flex-end;
 }

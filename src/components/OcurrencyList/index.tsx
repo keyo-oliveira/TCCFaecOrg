@@ -1,6 +1,7 @@
 import React, { FC, useEffect, useState } from "react";
 import { getOcurrencys } from "../../services/ocurrency";
 import Ocurrency from "../../../mocks/ocurrencys";
+import "./styles.scss";
 
 // import { Container } from './styles';
 
@@ -37,31 +38,74 @@ const OcurrencyList: FC<OcurrencyList> = () => {
     <aside>
       {Ocurrency.map((props: any) => {
         return (
-          <div className="ocurrency__container">
+          <div className="ocurrency__container" key={props.index}>
             <div className="ocurrency__title">
-              <span>{props.OcurrencyId}</span>
+              <span>{props.OcurrencyId + " " + props.Urgency}</span>
             </div>
-            <ul>
-              <li>{props.OcurrencyType}</li>
-              <li>{props.ManyEnvolved}</li>
-              <li>{props.Victims}</li>
-              <li>{props.GenerationDate}</li>
-              <li>{props.Latitude}</li>
-              <li>{props.Longitude}</li>
-              <li>{props.City}</li>
-              <li>{props.State}</li>
-              <li>{props.Address}</li>
-              <li>{props.Number}</li>
-              <li>{props.Neighborhood}</li>
-              <li>{props.Complement}</li>
+            <ul className="ocurrency_list">
+              <li className="ocurrency_list-item">
+                <span className="ocurrency_item-type">
+                  Tipo de ocorrência:{" "}
+                </span>
+                <span>{props.OcurrencyType}</span>
+              </li>
+              <li className="ocurrency_list-item">
+                <span className="ocurrency_item-type">
+                  Numeros de envolvidos:{" "}
+                </span>
+                <span>{props.ManyEnvolved}</span>
+              </li>
+              <li className="ocurrency_list-item">
+                <span className="ocurrency_item-type">Numero de vitimas: </span>
+                <span>{props.Victims}</span>
+              </li>
+              <li className="ocurrency_list-item">
+                <span className="ocurrency_item-type">Data de geração: </span>
+                <span>{props.GenerationDate}</span>
+              </li>
+              <li className="ocurrency_list-item">
+                <span className="ocurrency_item-type">Latitude: </span>
+                <span>{props.Latitude}</span>
+              </li>
+              <li className="ocurrency_list-item">
+                <span className="ocurrency_item-type">Longitude: </span>
+                <span>{props.Longitude}</span>
+              </li>
+              <li className="ocurrency_list-item">
+                <span className="ocurrency_item-type">Cidade: </span>
+                <span>{props.City}</span>
+              </li>
+              <li className="ocurrency_list-item">
+                <span className="ocurrency_item-type">Estado: </span>
+                <span>{props.State}</span>
+              </li>
+              <li className="ocurrency_list-item">
+                <span className="ocurrency_item-type">Rua: </span>
+                <span>{props.Address}</span>
+              </li>
+              <li className="ocurrency_list-item">
+                <span className="ocurrency_item-type">Número: </span>
+                <span>{props.Number}</span>
+              </li>
+              <li className="ocurrency_list-item">
+                <span className="ocurrency_item-type">Bairro: </span>
+                <span>{props.Neighborhood}</span>
+              </li>
+              <li className="ocurrency_list-item">
+                <span className="ocurrency_item-type">Complemento: </span>
+                <span>{props.Complement}</span>
+              </li>
             </ul>
-            <span>
-              <p>{props.Details}</p>
-            </span>
-            <button onClick={handleOcurrencyOpen}>{"<-"}</button>
+            <div className="details-container">
+              <strong>Detalhes: </strong>
+              <span>
+                <p>{props.Details}</p>
+              </span>
+            </div>
           </div>
         );
       })}
+      <button onClick={handleOcurrencyOpen}>{"<-"}</button>
     </aside>
   );
 };

@@ -13,6 +13,7 @@ const SideBar: FunctionComponent<ISideBar> = ({ children }) => {
     return (
       <button className="side-bar__open-button" onClick={showSidebar}>
         <OpenSideBarIcon />
+        Ocorrências
       </button>
     );
   }
@@ -20,13 +21,11 @@ const SideBar: FunctionComponent<ISideBar> = ({ children }) => {
   return (
     <aside className="side-bar__container">
       <div className="navbar">
-        <button className="side-bar_close-button" onClick={showSidebar}>X</button>
+        <button className="side-bar_close-button" onClick={showSidebar}>
+          X
+        </button>
       </div>
-      <nav className={sidebar ? "nav-menu active" : "nav-menu"}>
-        <ul className="nav-menu-items" onClick={showSidebar}>
-          <li className="navbar-toggle">{children}</li>
-        </ul>
-      </nav>
+      <nav className={sidebar ? "nav-menu active" : "nav-menu"}>{children}</nav>
     </aside>
   );
 };
