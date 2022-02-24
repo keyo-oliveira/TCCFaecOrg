@@ -4,8 +4,9 @@ import Footer from "../components/Footer";
 import SideBar from "../components/SideBar";
 import OcurrencyList from "../components/OcurrencyList";
 import { LoginContextProvider } from "../contexts/loginContext";
+import "../styles/index.scss";
 
-const HomePage = ({ children }) => {
+const HomePage = () => {
   return (
     <>
       <LoginContextProvider>

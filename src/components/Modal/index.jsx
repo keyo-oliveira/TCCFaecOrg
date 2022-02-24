@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import ModalContent from "./ModalContent";
+import ModalContent from "./ModalContent.jsx";
 import "./styles.scss";
 
 const Modal = ({ content, buttonText }) => {

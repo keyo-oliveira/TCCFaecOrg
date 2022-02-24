@@ -5,6 +5,8 @@ import PrivateRoute from "../components/PrivateRoute";
 import UserNotFound from "../components/UserNotFound";
 import { Router } from "@reach/router";
 import { LoginContextProvider, useLogin } from "../contexts/loginContext";
+import "../styles/index.scss";
+
 // markup
 const IndexPage = ({}) => {
   const { isLoggedIn } = useLogin();

@@ -1,4 +1,3 @@
-import { Link } from "gatsby";
 import React, { FunctionComponent, useState } from "react";
 import OpenSideBarIcon from "../icons/SideBarOpen";
 import "./styles.scss";
@@ -12,7 +11,7 @@ const SideBar: FunctionComponent<ISideBar> = ({ children }) => {
 
   if (!sidebar) {
     return (
-      <button onClick={showSidebar}>
+      <button className="side-bar__open-button" onClick={showSidebar}>
         <OpenSideBarIcon />
       </button>
     );
@@ -21,7 +20,7 @@ const SideBar: FunctionComponent<ISideBar> = ({ children }) => {
   return (
     <aside className="side-bar__container">
       <div className="navbar">
-        <button onClick={showSidebar}>X</button>
+        <button className="side-bar_close-button" onClick={showSidebar}>X</button>
       </div>
       <nav className={sidebar ? "nav-menu active" : "nav-menu"}>
         <ul className="nav-menu-items" onClick={showSidebar}>
