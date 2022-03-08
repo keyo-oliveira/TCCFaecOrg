@@ -1,7 +1,7 @@
 import React from "react";
 import "./styles.scss";
 
-const ModalContent = ({ children, close }) => {
+const ModalContent = ({ children, close }: any) => {
   return (
     <div className="modal">
       <div className="modal__container">

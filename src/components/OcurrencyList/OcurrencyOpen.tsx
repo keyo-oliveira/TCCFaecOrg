@@ -3,15 +3,19 @@ import React, { FunctionComponent } from "react";
 interface OcurrencyOpen {
   Ocurrency: any;
   handleOcurrencyOpen: any;
+  OcurrencyFilterId: number;
 }
 
 const OcurrencyOpen: FunctionComponent<OcurrencyOpen> = ({
   Ocurrency,
   handleOcurrencyOpen,
+  OcurrencyFilterId,
 }) => {
   return (
     <aside>
-      {Ocurrency.map((props: any) => {
+      {Ocurrency.filter(function (Ocurrency: any) {
+        return Ocurrency.OcurrencyId === OcurrencyFilterId;
+      }).map(function (props: any) {
         return (
           <div className="ocurrency__container" key={props.index}>
             <div className="ocurrency__title">

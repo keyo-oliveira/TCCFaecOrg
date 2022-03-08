@@ -1,3 +1,4 @@
+import { Link } from "gatsby";
 import React, { FunctionComponent } from "react";
 
 interface OcurrencyOpenButton {
@@ -15,9 +16,9 @@ const OcurrencyOpenButton: FunctionComponent<OcurrencyOpenButton> = ({
         return (
           <div className="ocurrency__container">
             <div className="ocurrency__title">
-              <button onClick={handleOcurrencyOpen}>
+              <Link to={"/ocurrency/" + Ocurrency.id}>
                 {"Ocorrencia " + props.OcurrencyId}
-              </button>
+              </Link>
             </div>
           </div>
         );

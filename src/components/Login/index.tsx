@@ -2,21 +2,20 @@ import * as React from "react";
 import { Link } from "gatsby";
 import { useForm } from "react-hook-form";
 import { useLogin } from "../../contexts/loginContext";
-import { navigate } from "gatsby"
-
+import { navigate } from "gatsby";
 
 import "./styles.scss";
 
 // eslint-disable-next-line react/prop-types
-const Login = ({ pageTitle }) => {
+const Login = () => {
   const { register, handleSubmit } = useForm();
   const { login, isLoggedIn } = useLogin();
-  const onSubmit = (data) => {
+  const onSubmit = (data: any) => {
     login(data);
-    if(!isLoggedIn) {
-      navigate('/')
+    if (!isLoggedIn) {
+      navigate("/");
     }
-    navigate('/home')
+    navigate("/home");
   };
 
   return (

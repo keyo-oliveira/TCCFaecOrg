@@ -1,13 +1,12 @@
 import React, { FC, useEffect, useState } from "react";
 import { getOcurrencys } from "../../services/ocurrency";
-import Ocurrency from "../../../mocks/ocurrencys";
 import "./styles.scss";
 import OcurrencyOpenButton from "./OcurrencyOpenButton";
 import OcurrencyOpen from "./OcurrencyOpen";
 
 // import { Container } from './styles';
 
-const OcurrencyList: FC<OcurrencyList> = () => {
+const OcurrencyList: FC<OcurrencyList> = ({ slug , Ocurrency}: any) => {
   const [ocurrencyOpen, setOcurrencyOpen] = useState(false);
   const ocurrencys = useEffect(() => {
     getOcurrencys();
@@ -31,6 +30,7 @@ const OcurrencyList: FC<OcurrencyList> = () => {
     <OcurrencyOpen
       Ocurrency={Ocurrency}
       handleOcurrencyOpen={handleOcurrencyOpen}
+      OcurrencyFilterId={slug}
     />
   );
 };

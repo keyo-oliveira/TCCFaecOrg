@@ -1,7 +1,7 @@
 import Login from "../Login";
 import Modal from "../Modal";
 import React from "react";
-import "./styles.scss"
+import "./styles.scss";
 
 const UserNotFound = () => {
   return (
