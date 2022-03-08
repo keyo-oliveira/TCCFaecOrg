@@ -6,3 +6,5 @@ export const getOcurrencys: Promise<any> | any = async () => {
     .then((response: any) => console.log(response))
     .catch((e: any) => console.log(e));
 };
+
+//comment
