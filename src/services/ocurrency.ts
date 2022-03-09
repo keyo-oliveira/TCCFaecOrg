@@ -11,3 +11,5 @@ export const getOcurrencys: Promise<Ocurrency> | any = async () => {
     return console.log(error);
   }
 };
+
+//comment 2
