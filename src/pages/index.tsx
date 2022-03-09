@@ -3,28 +3,29 @@ import Header from "../components/Header/";
 import Footer from "../components/Footer";
 import PrivateRoute from "../components/PrivateRoute";
 import UserNotFound from "../components/UserNotFound";
-import OcurrencyList from "../components/UserNotFound";
+import OcurrencyList from "../components/OcurrencyList";
 import { Router } from "@reach/router";
 import { LoginContextProvider } from "../contexts/loginContext";
 import "../styles/index.scss";
+import SideBar from "../components/SideBar";
+import Ocurrency from "../../mocks/ocurrencys";
 
 // markup
 const IndexPage = ({}) => {
   return (
     <>
-      <main>
-        <LoginContextProvider>
-          <Header pageTitle="Site Home" />
-          <Router basepath="/">
-            <PrivateRoute path={"/home"} />
-            <PrivateRoute
-              path="/ocurrency/:slug"
-              component={OcurrencyList}
-            />{" "}
-          </Router>
-        </LoginContextProvider>
-      </main>
-      <Footer />
+      <LoginContextProvider>
+        <main>
+          <Header pageTitle="FAEC" />
+          <div className={"container"}>
+            {" "}
+            <SideBar>
+              <OcurrencyList OcurrencyList={Ocurrency} />
+            </SideBar>
+          </div>
+          <Footer />
+        </main>
+      </LoginContextProvider>
     </>
   );
 };

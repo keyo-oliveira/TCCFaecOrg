@@ -1,8 +1,13 @@
 import axios from "axios";
 
-export const getOcurrencys: Promise<any> | any = async () => {
-  await axios
-    .get("https://localhost:5001/api/Ocorrencias")
-    .then((response: any) => console.log(response))
-    .catch((e: any) => console.log(e));
+export const getOcurrencys: Promise<Ocurrency> | any = async () => {
+  try {
+    const { data } = await axios.get<Ocurrency>(
+      "https://localhost:5001/api/Ocorrencias"
+    );
+
+    return console.log(data);
+  } catch (error) {
+    return console.log(error);
+  }
 };

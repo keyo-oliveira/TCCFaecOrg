@@ -15,7 +15,7 @@ const Login = () => {
     if (!isLoggedIn) {
       navigate("/");
     }
-    navigate("/home");
+    navigate("/");
   };
 
   return (

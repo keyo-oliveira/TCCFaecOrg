@@ -6,7 +6,7 @@ import OcurrencyOpen from "./OcurrencyOpen";
 
 // import { Container } from './styles';
 
-const OcurrencyList: FC<OcurrencyList> = ({ slug , Ocurrency}: any) => {
+const OcurrencyList: FC<OcurrencyList> = ({ OcurrencyList }) => {
   const [ocurrencyOpen, setOcurrencyOpen] = useState(false);
   const ocurrencys = useEffect(() => {
     getOcurrencys();
@@ -20,7 +20,7 @@ const OcurrencyList: FC<OcurrencyList> = ({ slug , Ocurrency}: any) => {
   if (!ocurrencyOpen) {
     return (
       <OcurrencyOpenButton
-        Ocurrency={Ocurrency}
+        ocurrency={OcurrencyList}
         handleOcurrencyOpen={handleOcurrencyOpen}
       />
     );
@@ -28,9 +28,9 @@ const OcurrencyList: FC<OcurrencyList> = ({ slug , Ocurrency}: any) => {
 
   return (
     <OcurrencyOpen
-      Ocurrency={Ocurrency}
+      ocurrency={OcurrencyList}
       handleOcurrencyOpen={handleOcurrencyOpen}
-      OcurrencyFilterId={slug}
+      OcurrencyFilterId={1}
     />
   );
 };

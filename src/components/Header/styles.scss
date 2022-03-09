@@ -1,0 +1,43 @@
+.header__container {
+  margin: auto;
+  font-family: sans-serif;
+  width: 100%;
+  max-width: 1980px;
+}
+
+.heading {
+  color: rebeccapurple;
+}
+
+.nav-links {
+  margin: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  list-style: none;
+  background-color: rgb(26, 83, 3);
+}
+
+.nav-link-item {
+  border: 1px solid black;
+  padding: 1rem 1rem;
+  margin: 15px;
+  font-size: 40px;
+  background-color: gray;
+  &:hover {
+    background-color: black;
+  }
+}
+
+.nav-link-text {
+  color: white;
+  text-decoration: none;
+}
+
+.nav-Right {
+  flex-grow: 1;
+  text-align: right;
+  font-size: 20px;
+  margin-top: 10px;
+  margin-right: 5%;
+}

@@ -1,17 +1,24 @@
 import React from "react";
+import PropTypes from "prop-types";
+import { navigate } from "gatsby";
 import { useLogin } from "../../contexts/loginContext";
-import { Redirect } from "@reach/router";
 
 const PrivateRoute = ({ component: Component, location, ...rest }: any) => {
   const { isLoggedIn } = useLogin();
-  return (
-    <Route
-      {...rest}
-      render={() =>
-        isLoggedIn ? <Component {...rest} /> : <Redirect to="/" />
-      }
-    />
-  );
+
+  console.log("isLoggedIn - private route", isLoggedIn);
+
+  if (!isLoggedIn && location.pathname !== `/home`) {
+    // If we’re not logged in, redirect to the home page.
+    navigate(`/`);
+    return null;
+  }
+
+  return <Component {...rest} />;
 };
+
+// PrivateRoute.propTypes = {
+//   component: PropTypes.any.isRequired,
+// };
 
 export default PrivateRoute;

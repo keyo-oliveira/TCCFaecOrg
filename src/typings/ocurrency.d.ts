@@ -22,6 +22,6 @@ interface Ocurrency {
   Number: string;
   Neighborhood: string;
   Complement: string;
-  Dangerous: "low" | "medium" | "high" | "urgent";
-  Urgency: "low" | "medium" | "high" | "urgent";
+  Dangerous: string;
+  Urgency: string;
 }

@@ -1,17 +1,23 @@
-import React, { createContext, useContext, useState } from "react";
-
-interface LoginContext {
-  login: any;
-  logout: any;
-  isLoggedIn: any;
-  setIsLoggedIn: any;
+import React, { createContext, FC, useContext, useState } from "react";
+import { isEmptyObject } from "../utils/VerifyEmptyObj";
+interface IUser {
+  username: string;
+  password: string;
 }
-export const loginContext = createContext<LoginContext | null>(null);
+interface LoginContextProps {
+  login: (user: IUser) => void;
+  logout: () => void;
+  isLoggedIn: boolean;
+}
 
-export function LoginContextProvider({ children }: any) {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+export const LoginContext = createContext<LoginContextProps>(
+  {} as LoginContextProps
+);
 
-  function login(data: any) {
+export const LoginContextProvider: FC = ({ children }) => {
+  const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
+
+  function login(data: IUser) {
     if (data.username && data.password) {
       setIsLoggedIn(true);
     }
@@ -23,21 +29,24 @@ export function LoginContextProvider({ children }: any) {
   }
 
   return (
-    <loginContext.Provider
+    <LoginContext.Provider
       value={{
         login,
         logout,
         isLoggedIn,
-        setIsLoggedIn,
       }}
     >
       {children}
-    </loginContext.Provider>
+    </LoginContext.Provider>
   );
-}
+};
 
 export const useLogin = () => {
-  const context = useContext(loginContext);
+  const context = useContext(LoginContext);
+
+  if (isEmptyObject(context)) {
+    throw new Error("useLogin must be used inside a login context");
+  }
   return context;
 };
 

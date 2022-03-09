@@ -17,40 +17,40 @@ exports.onCreatePage = async ({ page, actions }) => {
   }
 };
 
-exports.createPages = async function ({ actions, graphql }) {
-  const { data } = await graphql(`
-    query {
-      AllOcurrency {
-        Ocurrency {
-          OcurrencyId
-          OcurrencyType
-          ManyEnvolved
-          Victims
-          GenerationDate
-          Latitude
-          Longitude
-          City
-          State
-          Address
-          Number
-          Neighborhood
-          Complement
-          Details
-          AnswerDate
-          Caller
-          AnsweredBy
-          Dangerous
-          Urgency
-        }
-      }
-    }
-  `);
-  data.AllOcurrency.forEach((Ocurrency) => {
-    const slug = Ocurrency.fields.OcurrencyId;
-    actions.createPage({
-      path: slug,
-      component: require.resolve(`./src/components/OcurrencyList/index.tsx`),
-      context: { slug: slug },
-    });
-  });
-};
+// exports.createPages = async function ({ actions, graphql }) {
+//   const { data } = await graphql(`
+//     query {
+//       AllOcurrency {
+//         node {
+//           OcurrencyId
+//           OcurrencyType
+//           ManyEnvolved
+//           Victims
+//           GenerationDate
+//           Latitude
+//           Longitude
+//           City
+//           State
+//           Address
+//           Number
+//           Neighborhood
+//           Complement
+//           Details
+//           AnswerDate
+//           Caller
+//           AnsweredBy
+//           Dangerous
+//           Urgency
+//         }
+//       }
+//     }
+//   `);
+//   data.AllOcurrency.forEach((Ocurrency) => {
+//     const slug = Ocurrency.fields.OcurrencyId;
+//     actions.createPage({
+//       path: slug,
+//       component: require.resolve(`./src/components/OcurrencyList/index.tsx`),
+//       context: { slug: slug },
+//     });
+//   });
+// };
