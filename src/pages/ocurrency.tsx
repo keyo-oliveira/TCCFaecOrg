@@ -9,32 +9,34 @@ import { graphql } from "gatsby";
 
 export const query = graphql`
   query ($slug: Int) {
-    ocurrencyJson(OcurrencyId: { eq: $slug }) {
-      Address
-      AnswerDate
-      AnsweredBy
-      Caller
-      City
-      Complement
-      Dangerous
-      Details
-      GenerationDate
-      Longitude
-      Latitude
-      Victims
-      Urgency
-      State
-      OcurrencyType
-      OcurrencyId
-      Number
-      Neighborhood
-      ManyEnvolved
+    allOcurrencyJson(filter: { OcurrencyId: { eq: $slug } }) {
+      nodes {
+        Address
+        AnswerDate
+        AnsweredBy
+        Caller
+        City
+        Complement
+        Dangerous
+        Details
+        GenerationDate
+        Longitude
+        Latitude
+        Victims
+        Urgency
+        State
+        OcurrencyType
+        OcurrencyId
+        Number
+        Neighborhood
+        ManyEnvolved
+      }
     }
   }
 `;
 
 const OcurrencyPage = ({ data }: any) => {
-  const ocurrency = data.ocurencyJson;
+  console.log(data);
   return (
     <>
       <LoginContextProvider>
@@ -44,7 +46,7 @@ const OcurrencyPage = ({ data }: any) => {
             {" "}
             <title>{"home"}</title>
             <SideBar>
-              <OcurrencyList OcurrencyList={ocurrency} />
+              <OcurrencyList OcurrencyList={data.allOcurrencyJson.nodes} />
             </SideBar>
           </div>
           <Footer />
