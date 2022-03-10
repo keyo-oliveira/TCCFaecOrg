@@ -20,12 +20,14 @@ const SideBar: FunctionComponent<ISideBar> = ({ children }) => {
 
   return (
     <aside className="side-bar__container">
-      <div className="navbar">
-        <button className="side-bar_close-button" onClick={showSidebar}>
-          X
-        </button>
+      <button className="side-bar_close-button" onClick={showSidebar}>
+        X
+      </button>
+      <div className="side-bar__navbar">
+        <nav className={sidebar ? "nav-menu active" : "nav-menu"}>
+          {children}
+        </nav>
       </div>
-      <nav className={sidebar ? "nav-menu active" : "nav-menu"}>{children}</nav>
     </aside>
   );
 };

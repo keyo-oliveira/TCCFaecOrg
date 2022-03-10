@@ -2,6 +2,11 @@
   width: 100%;
   height: 100%;
   padding: 15px 0;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 10px;
+
   & span {
     padding: 5px;
     text-align: start;
@@ -34,4 +39,46 @@
   display: flex;
   margin: 0 auto;
   justify-content: flex-start;
+}
+
+.ocurrency__card {
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  width: 300px;
+  text-decoration: none;
+  &.answered {
+    opacity: 0.5;
+  }
+}
+
+.gradient {
+  background-image: radial-gradient(transparent, #77f373);
+  border: 3px solid #77f373;
+  &.answered {
+    background-image: radial-gradient(transparent, gray);
+    border: 3px solid gray;
+  }
+  &.urgent {
+    background-image: radial-gradient(transparent, red);
+    border: 3px solid red;
+  }
+  &.high {
+    background-image: radial-gradient(transparent, yellow);
+    border: 3px solid yellow;
+  }
+  &:hover {
+    background-image: radial-gradient(transparent, blue);
+    border: 3px solid blue;
+  }
+}
+
+.ocurrency__link {
+  width: 100%;
+  height: 100%;
+  padding: auto;
+  text-decoration: none;
+  color: black;
+  font-family: sans-serif;
 }

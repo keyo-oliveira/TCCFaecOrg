@@ -2,7 +2,7 @@ const Ocurrency = [
   {
     OcurrencyId: 1,
 
-    OcurrencyType: "Emergency",
+    OcurrencyType: "Assistência Civil",
 
     ManyEnvolved: 4,
 
@@ -41,7 +41,7 @@ const Ocurrency = [
   {
     OcurrencyId: 2,
 
-    OcurrencyType: "Emergency",
+    OcurrencyType: "Assalto",
 
     ManyEnvolved: 10,
 
@@ -80,7 +80,7 @@ const Ocurrency = [
   {
     OcurrencyId: 3,
 
-    OcurrencyType: "Emergency",
+    OcurrencyType: "Acidente de transito",
 
     ManyEnvolved: 10,
 
@@ -110,7 +110,7 @@ const Ocurrency = [
 
     Caller: "Usuario que chamou",
 
-    AnsweredBy: "Policia Civil",
+    AnsweredBy: "",
 
     Dangerous: "low",
 
@@ -118,4 +118,4 @@ const Ocurrency = [
   },
 ];
 
-export default Ocurrency
+export default Ocurrency;

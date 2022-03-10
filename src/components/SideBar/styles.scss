@@ -1,5 +1,6 @@
 .side-bar__container {
   display: flex;
+  justify-content: center;
   position: fixed;
   right: 0;
   top: 0;
@@ -7,7 +8,9 @@
   width: 30%;
   background-color: gray;
   opacity: 75%;
+  transition: opacity 0.5s;
   z-index: 999;
+  box-shadow: 0 25px 45px rgba(0, 0, 0, 0.5);
   &:hover {
     opacity: 100%;
   }
@@ -25,11 +28,24 @@
   min-height: 50px;
   border-radius: 15px;
   color: black;
+  box-shadow: 0 5px 5px rgba(0, 0, 0, 0.5);
   background-color: rgba(170, 180, 173, 0.384);
-  opacity: 50%;
   -webkit-appearance: none;
+  &:hover {
+    background-color: rgba(24, 67, 255, 0.8);
+  }
 }
 
 .side-bar_close-button {
-  align-self: flex-end;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 50px;
+  margin: 20px;
+  height: 50px;
+  &:hover {
+    background-color: red;
+    border: 3px solid red;
+  }
 }
