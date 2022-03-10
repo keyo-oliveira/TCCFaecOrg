@@ -1,3 +1,4 @@
+import classNames from "classnames";
 import React, { FunctionComponent } from "react";
 
 interface OcurrencyOpen {
@@ -12,14 +13,22 @@ const OcurrencyOpen: FunctionComponent<OcurrencyOpen> = ({
   OcurrencyFilterId,
 }) => {
   return (
-    <aside>
+    <div className="ocurrency__container">
       {ocurrency
         .filter(function (Ocurrency: any) {
           return Ocurrency.OcurrencyId === OcurrencyFilterId;
         })
         .map(function (props: any) {
           return (
-            <div className="ocurrency__container" key={props.index}>
+            <div
+              className={classNames(
+                "ocurrency__card gradient",
+                props.Urgency === "urgent" && "urgent",
+                props.Urgency === "high" && "high",
+                props.AnsweredBy != "" && "answered"
+              )}
+              key={props.index}
+            >
               <div className="ocurrency__title">
                 <span>{props.OcurrencyId + " " + props.Urgency}</span>
               </div>
@@ -89,7 +98,7 @@ const OcurrencyOpen: FunctionComponent<OcurrencyOpen> = ({
           );
         })}
       <button onClick={handleOcurrencyOpen}>{"<-"}</button>
-    </aside>
+    </div>
   );
 };
 
