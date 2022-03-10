@@ -1,7 +1,7 @@
 import React, { FunctionComponent } from "react";
 
 interface OcurrencyOpen {
-  ocurrency: any;
+  ocurrency: Ocurrency[];
   handleOcurrencyOpen: any;
   OcurrencyFilterId: number;
 }

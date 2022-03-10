@@ -3,21 +3,22 @@ import { Link } from "gatsby";
 import React, { FunctionComponent } from "react";
 import "./styles.scss";
 
-interface OcurrencyOpenButton {
-  ocurrency: any;
-  handleOcurrencyOpen: any;
+interface OcurrencyCards{
+  ocurrency: Ocurrency[];
 }
 
-const OcurrencyOpenButton: FunctionComponent<OcurrencyOpenButton> = ({
+const OcurrencyCards: FunctionComponent<OcurrencyCards> = ({
   ocurrency,
-  handleOcurrencyOpen,
 }) => {
   return (
     <div className="ocurrency__container">
       {ocurrency.map((props: Ocurrency) => {
         return (
           <div className="ocurrency__wrapper">
-            <Link className="ocurrency__link" to={"/ocurrency/" + ocurrency.id}>
+            <Link
+              className="ocurrency__link"
+              to={"/ocurrency/" + props.OcurrencyId}
+            >
               <div
                 className={classNames(
                   "ocurrency__card gradient",
@@ -27,14 +28,14 @@ const OcurrencyOpenButton: FunctionComponent<OcurrencyOpenButton> = ({
                 )}
               >
                 <div>
-                  <span className="ocurrency-title"> {"Urgência: "}</span>
+                  <span className="ocurrency-title"> Urgência: </span>
                   <span className="ocurrency-urgency">{props.Urgency}</span>
                 </div>
                 <div>
-                  <span className="ocurrency_title-ocurrency">
-                    "Ocorrencia: "
+                  <span className="ocurrency_title-ocurrency">Ocorrencia:</span>
+                  <span className="ocurrency_id">
+                    {props.OcurrencyId + "-"}
                   </span>
-                  <span className="ocurrency_id">{props.OcurrencyId}</span>
                   <span className="ocurrency_type">{props.OcurrencyType}</span>
                 </div>
                 {props.AnsweredBy != "" && (
@@ -51,4 +52,4 @@ const OcurrencyOpenButton: FunctionComponent<OcurrencyOpenButton> = ({
   );
 };
 
-export default OcurrencyOpenButton;
+export default OcurrencyCards;
