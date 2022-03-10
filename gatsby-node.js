@@ -4,6 +4,8 @@
  * See: https://www.gatsbyjs.com/docs/node-apis/
  */
 
+const { Component } = require("react");
+
 exports.onCreatePage = async ({ page, actions }) => {
   const { createPage } = actions;
 
@@ -17,8 +19,33 @@ exports.onCreatePage = async ({ page, actions }) => {
   }
 };
 
-exports.createPage = async({actions: {createPage}, graphql}) => {
+exports.createPages = async ({ actions: { createPage }, graphql }) => {
   const data = await graphql(
-    ``
-  )
-}
+    `
+      {
+        allOcurrencyJson {
+          nodes {
+            OcurrencyId
+          }
+        }
+      }
+    `
+  );
+
+  if (data.error) {
+    console.log("Error retrieving data", data.error);
+    return;
+  }
+
+  const ocurrencyTemplate = require.resolve("./src/pages/ocurrency.tsx");
+
+  data.data.allOcurrencyJson.nodes.forEach((node) => {
+    createPage({
+      path: `/ocurrency/${node.OcurrencyId}/`,
+      component: ocurrencyTemplate,
+      context: {
+        slug: node.OcurrencyId,
+      },
+    });
+  });
+};
