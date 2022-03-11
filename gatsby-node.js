@@ -37,7 +37,7 @@ exports.createPages = async ({ actions: { createPage }, graphql }) => {
     return;
   }
 
-  const ocurrencyTemplate = require.resolve("./src/pages/ocurrency.tsx");
+  const ocurrencyTemplate = require.resolve("./src/templates/ocurrency.tsx");
 
   data.data.allOcurrencyJson.nodes.forEach((node) => {
     createPage({
