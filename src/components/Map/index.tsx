@@ -13,7 +13,7 @@ interface ICenter {
 const Map: FC<IMaps> = ({ center }) => {
   const containerStyle = {
     width: "800px",
-    height: "800px",
+    height: "600px",
   };
 
   const { isLoaded, loadError } = useJsApiLoader({
@@ -50,7 +50,7 @@ const Map: FC<IMaps> = ({ center }) => {
     <GoogleMap
       mapContainerStyle={containerStyle}
       center={center}
-      zoom={10}
+      zoom={6}
       onLoad={onLoad}
       onUnmount={onUnmount}
     >
