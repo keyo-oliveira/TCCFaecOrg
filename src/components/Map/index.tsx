@@ -1,5 +1,6 @@
 import React, { FC, useCallback, useState } from "react";
 import { GoogleMap, useJsApiLoader, Marker } from "@react-google-maps/api";
+import MapMarkerIcon from "../icons/MapMarkerIcon";
 
 interface IMaps {
   center: ICenter;
@@ -54,8 +55,9 @@ const Map: FC<IMaps> = ({ center }) => {
       onLoad={onLoad}
       onUnmount={onUnmount}
     >
-      {/* Child components, such as markers, info windows, etc. */}
-      <></>
+      <Marker position={center} visible={true}>
+        <MapMarkerIcon />
+      </Marker>
     </GoogleMap>
   ) : (
     <></>

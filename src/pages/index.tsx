@@ -22,7 +22,6 @@ export const query = graphql`
     }
   }
 `;
-// markup
 const IndexPage = ({ data }: any) => {
   return (
     <>

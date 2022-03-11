@@ -7,10 +7,7 @@ interface OcurrencyOpen {
   OcurrencyFilterId: number;
 }
 
-const OcurrencyList: FunctionComponent<OcurrencyOpen> = ({
-  ocurrency,
-  OcurrencyFilterId,
-}) => {
+const OcurrencyList: FunctionComponent<OcurrencyOpen> = ({ ocurrency }) => {
   return (
     <div className="ocurrency__container">
       {ocurrency.map((props: any) => {
@@ -90,7 +87,9 @@ const OcurrencyList: FunctionComponent<OcurrencyOpen> = ({
           </div>
         );
       })}
-      <Link to="/">Voltar</Link>
+      <Link className="ocurrency_back-button" to="/">
+        Voltar
+      </Link>
     </div>
   );
 };
