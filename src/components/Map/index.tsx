@@ -12,8 +12,8 @@ interface ICenter {
 
 const Map: FC<IMaps> = ({ center }) => {
   const containerStyle = {
-    width: "400px",
-    height: "400px",
+    width: "800px",
+    height: "800px",
   };
 
   const { isLoaded, loadError } = useJsApiLoader({

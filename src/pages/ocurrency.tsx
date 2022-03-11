@@ -5,7 +5,8 @@ import SideBar from "../components/SideBar";
 import { LoginContextProvider } from "../contexts/loginContext";
 import "../styles/index.scss";
 import { graphql } from "gatsby";
-import OcurrencyCards from "../components/OcurrencyList/OcurrencyCards";
+import Map from "../components/Map";
+import OcurrencyList from "../components/OcurrencyList";
 
 export const query = graphql`
   query ($slug: Int) {
@@ -37,6 +38,10 @@ export const query = graphql`
 
 const OcurrencyPage = ({ data }: any) => {
   console.log(data);
+  const center = {
+    lat: data.allOcurrencyJson.nodes.Latitude,
+    lng: data.allOcurrencyJson.nodes.Longitude,
+  };
   return (
     <>
       <LoginContextProvider>
@@ -44,10 +49,16 @@ const OcurrencyPage = ({ data }: any) => {
           <Header pageTitle="Site Home" />
           <div className={"container"}>
             {" "}
-            <title>{"home"}</title>
+            <title>
+              {"Ocorrencia: " + data.allOcurrencyJson.nodes.OcurrencyId}
+            </title>
             <SideBar>
-              <OcurrencyCards ocurrency={data.allOcurrencyJson.nodes} />
+              <OcurrencyList
+                ocurrency={data.allOcurrencyJson.nodes}
+                OcurrencyFilterId={data.allOcurrencyJson.nodes.OcurrencyId}
+              />
             </SideBar>
+            <Map center={center} />
           </div>
           <Footer />
         </main>

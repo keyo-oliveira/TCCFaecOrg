@@ -3,14 +3,27 @@ import Header from "../components/Header/";
 import Footer from "../components/Footer";
 import PrivateRoute from "../components/PrivateRoute";
 import UserNotFound from "../components/UserNotFound";
-import OcurrencyList from "../components/OcurrencyList";
 import { Router } from "@reach/router";
 import { LoginContextProvider } from "../contexts/loginContext";
 import "../styles/index.scss";
 import SideBar from "../components/SideBar";
+import OcurrencyCards from "../components/OcurrencyList/OcurrencyCards";
+import { graphql } from "gatsby";
 
+export const query = graphql`
+  query ($slug: Int) {
+    allOcurrencyJson(filter: { OcurrencyId: { eq: $slug } }) {
+      nodes {
+        AnswerDate
+        Urgency
+        OcurrencyType
+        OcurrencyId
+      }
+    }
+  }
+`;
 // markup
-const IndexPage = ({}) => {
+const IndexPage = ({ data }: any) => {
   return (
     <>
       <LoginContextProvider>
@@ -18,7 +31,9 @@ const IndexPage = ({}) => {
           <Header pageTitle="FAEC" />
           <div className={"container"}>
             {" "}
-            <SideBar></SideBar>
+            <SideBar>
+              <OcurrencyCards ocurrency={data.allOcurrencyJson.nodes} />
+            </SideBar>
           </div>
           <Footer />
         </main>
