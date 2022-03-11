@@ -2,10 +2,10 @@ import React from "react";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import SideBar from "../components/SideBar";
-import OcurrencyList from "../components/OcurrencyList";
 import { LoginContextProvider } from "../contexts/loginContext";
 import "../styles/index.scss";
 import { graphql } from "gatsby";
+import OcurrencyCards from "../components/OcurrencyList/OcurrencyCards";
 
 export const query = graphql`
   query ($slug: Int) {
@@ -46,7 +46,7 @@ const OcurrencyPage = ({ data }: any) => {
             {" "}
             <title>{"home"}</title>
             <SideBar>
-              <OcurrencyList OcurrencyList={data.allOcurrencyJson.nodes} />
+              <OcurrencyCards ocurrency={data.allOcurrencyJson.nodes} />
             </SideBar>
           </div>
           <Footer />

@@ -8,7 +8,6 @@ import { Router } from "@reach/router";
 import { LoginContextProvider } from "../contexts/loginContext";
 import "../styles/index.scss";
 import SideBar from "../components/SideBar";
-import Ocurrency from "../../mocks/ocurrencys";
 
 // markup
 const IndexPage = ({}) => {
@@ -19,9 +18,7 @@ const IndexPage = ({}) => {
           <Header pageTitle="FAEC" />
           <div className={"container"}>
             {" "}
-            <SideBar>
-              <OcurrencyList OcurrencyList={Ocurrency} />
-            </SideBar>
+            <SideBar></SideBar>
           </div>
           <Footer />
         </main>

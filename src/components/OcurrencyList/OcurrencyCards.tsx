@@ -3,13 +3,11 @@ import { Link } from "gatsby";
 import React, { FunctionComponent } from "react";
 import "./styles.scss";
 
-interface OcurrencyCards{
+interface OcurrencyCards {
   ocurrency: Ocurrency[];
 }
 
-const OcurrencyCards: FunctionComponent<OcurrencyCards> = ({
-  ocurrency,
-}) => {
+const OcurrencyCards: FunctionComponent<OcurrencyCards> = ({ ocurrency }) => {
   return (
     <div className="ocurrency__container">
       {ocurrency.map((props: Ocurrency) => {

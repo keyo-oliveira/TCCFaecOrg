@@ -5,6 +5,12 @@ module.exports = {
   },
   plugins: [
     {
+      resolve: `gatsby-source-custom`,
+      options: {
+        apiKey: process.env.GOOGLE_API_KEY,
+        }
+    },
+    {
       resolve: `gatsby-source-filesystem`,
       options: {
         path: `./mocks/`,
@@ -14,3 +20,7 @@ module.exports = {
     `gatsby-transformer-json`,
   ],
 };
+
+require("dotenv").config({
+  path: `.env.${process.env.NODE_ENV}`,
+})
