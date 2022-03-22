@@ -7,6 +7,7 @@ import React, {
 } from "react";
 import { isEmptyObject } from "../utils/VerifyEmptyObj";
 import Cookies from "js-cookie";
+import { navigate } from "gatsby";
 interface IUser {
   username: string;
   password: string;
@@ -32,12 +33,16 @@ export const LoginContextProvider: FC = ({ children }) => {
 
   function login(data: IUser) {
     if (data.username && data.password) {
+      navigate("/");
+
       return Cookies.set("login-context", "logged-in", { expires: 7 });
     }
     return null;
   }
 
   function logout() {
+    navigate("/");
+
     return Cookies.remove("login-context");
   }
 

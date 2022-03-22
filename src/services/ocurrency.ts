@@ -5,8 +5,8 @@ export const getOcurrencys: Promise<Ocurrency> | any = async () => {
     const { data } = await axios.get<Ocurrency>(
       "https://localhost:5001/api/Ocorrencias"
     );
-
-    return console.log(data);
+    console.log(data);
+    return data;
   } catch (error) {
     return console.log(error);
   }

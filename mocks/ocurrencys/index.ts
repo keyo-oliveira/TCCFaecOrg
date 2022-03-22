@@ -1,20 +1,20 @@
 const Ocurrency = [
   {
-    OcurrencyId: 1,
+    ocurrencyId: 1,
 
-    OcurrencyType: "Assistência Civil",
+    ocurrencyType: "Assistência Civil",
 
-    ManyEnvolved: 4,
+    manyEnvolved: 4,
 
-    Victims: 2,
+    victims: 2,
 
-    GenerationDate: "22/02/2021",
+    generationDate: "22/02/2021",
 
-    Latitude: "-23.1171",
+    latitude: "-23.1171",
 
-    Longitude: "-46.5502",
+    longitude: "-46.5502",
 
-    City: "Atibaia",
+    city: "Atibaia",
 
     State: "SP",
 

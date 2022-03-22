@@ -5,23 +5,23 @@ interface OcurrencyList {
 }
 
 interface Ocurrency {
-  OcurrencyId: number;
-  GenerationDate: string;
-  Longitude: string;
-  Latitude: string;
-  AnswerDate: string;
-  Caller: partial<NaturalPerson>;
-  AnsweredBy: partial<PublicAgent>;
-  OcurrencyType: string;
-  ManyEnvolved: number;
-  Victims: number;
-  Details: string;
-  City: string;
-  State: string;
-  Address: string;
-  Number: string;
-  Neighborhood: string;
-  Complement: string;
-  Dangerous: string;
-  Urgency: string;
+  ocurrencyId: number;
+  generationDate: string;
+  longitude: string;
+  latitude: string;
+  answerDate: string;
+  caller: partial<NaturalPerson>;
+  answeredBy: partial<PublicAgent>;
+  ocurrencyType: string;
+  manyEnvolved: number;
+  victims: number;
+  details: string;
+  city: string;
+  state: string;
+  address: string;
+  number: string;
+  neighborhood: string;
+  complement: string;
+  dangerous: string;
+  urgency: string;
 }

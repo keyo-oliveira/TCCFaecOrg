@@ -12,12 +12,12 @@ import { graphql } from "gatsby";
 
 export const query = graphql`
   query ($slug: Int) {
-    allOcurrencyJson(filter: { OcurrencyId: { eq: $slug } }) {
+    allOcurrencyJson(filter: { ocurrencyId: { eq: $slug } }) {
       nodes {
-        AnswerDate
-        Urgency
-        OcurrencyType
-        OcurrencyId
+        answerDate
+        urgency
+        ocurrencyType
+        ocurrencyId
       }
     }
   }

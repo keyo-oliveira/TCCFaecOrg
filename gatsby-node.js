@@ -25,7 +25,7 @@ exports.createPages = async ({ actions: { createPage }, graphql }) => {
       {
         allOcurrencyJson {
           nodes {
-            OcurrencyId
+            ocurrencyId
           }
         }
       }
@@ -41,10 +41,10 @@ exports.createPages = async ({ actions: { createPage }, graphql }) => {
 
   data.data.allOcurrencyJson.nodes.forEach((node) => {
     createPage({
-      path: `/ocurrency/${node.OcurrencyId}/`,
+      path: `/ocurrency/${node.ocurrencyId}/`,
       component: ocurrencyTemplate,
       context: {
-        slug: node.OcurrencyId,
+        slug: node.ocurrencyId,
       },
     });
   });
