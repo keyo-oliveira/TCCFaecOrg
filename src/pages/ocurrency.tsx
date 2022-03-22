@@ -61,11 +61,8 @@ const OcurrencyPage = ({ data }: any) => {
             </title>
             <SideBar>
               <OcurrencyList
-                ocurrency={data.allOcurrencyJson.nodes && axiosData}
-                OcurrencyFilterId={
-                  data.allOcurrencyJson.nodes.ocurrencyId &&
-                  axiosData.ocurrencyId
-                }
+                ocurrency={data.allOcurrencyJson.nodes}
+                OcurrencyFilterId={data.allOcurrencyJson.nodes.ocurrencyId}
               />
             </SideBar>
             <Map center={center} />

@@ -117,5 +117,3 @@ const Ocurrency = [
     Urgency: "high",
   },
 ];
-
-export default Ocurrency;

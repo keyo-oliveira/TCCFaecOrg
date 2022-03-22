@@ -24,6 +24,7 @@
     "axios": "^0.25.0",
     "classnames": "^2.3.1",
     "gatsby": "^4.8.0",
+    "gatsby-node-helpers": "^1.2.1",
     "gatsby-plugin-sass": "^5.1.0",
     "gatsby-source-faker": "^4.9.0",
     "gatsby-source-filesystem": "^4.9.1",

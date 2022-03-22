@@ -3,8 +3,35 @@
  *
  * See: https://www.gatsbyjs.com/docs/node-apis/
  */
+const axios = require("axios");
 
-const { Component } = require("react");
+exports.sourceNodes = async ({
+  actions,
+  createNodeId,
+  createContentDigest,
+}) => {
+  const response = await axios
+    .get("http://localhost:5000/api/Ocorrencias")
+    .catch((error) => {
+      console.log(error.message);
+    });
+
+  const ocurrencys = response.data;
+
+  console.log(ocurrencys);
+
+  ocurrencys.forEach((oc) => {
+    const node = {
+      ...oc,
+      id: createNodeId(`OcurrencyNodeID${oc.ocurrencyId}`),
+      internal: {
+        type: "ocurrencysType",
+        contentDigest: createContentDigest(oc),
+      },
+    };
+    actions.createNode(node);
+  });
+};
 
 exports.onCreatePage = async ({ page, actions }) => {
   const { createPage } = actions;

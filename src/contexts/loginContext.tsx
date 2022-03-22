@@ -33,17 +33,14 @@ export const LoginContextProvider: FC = ({ children }) => {
 
   function login(data: IUser) {
     if (data.username && data.password) {
-      navigate("/");
-
       return Cookies.set("login-context", "logged-in", { expires: 7 });
     }
     return null;
   }
 
   function logout() {
-    navigate("/");
-
-    return Cookies.remove("login-context");
+    Cookies.remove("login-context");
+    return navigate("");
   }
 
   return (

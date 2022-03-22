@@ -5,6 +5,7 @@ interface OcurrencyList {
 }
 
 interface Ocurrency {
+  id: OcocurrencyId
   ocurrencyId: number;
   generationDate: string;
   longitude: string;

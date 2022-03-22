@@ -12,6 +12,7 @@ const Login = () => {
   const { login } = useLogin();
   const onSubmit = (data: any) => {
     login(data);
+    navigate("/");
   };
 
   return (
