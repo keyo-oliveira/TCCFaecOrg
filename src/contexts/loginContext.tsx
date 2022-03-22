@@ -1,5 +1,12 @@
-import React, { createContext, FC, useContext, useState } from "react";
+import React, {
+  createContext,
+  FC,
+  useContext,
+  useEffect,
+  useState,
+} from "react";
 import { isEmptyObject } from "../utils/VerifyEmptyObj";
+import Cookies from "js-cookie";
 interface IUser {
   username: string;
   password: string;
@@ -7,7 +14,7 @@ interface IUser {
 interface LoginContextProps {
   login: (user: IUser) => void;
   logout: () => void;
-  isLoggedIn: boolean;
+  isLoggedIn: string;
 }
 
 export const LoginContext = createContext<LoginContextProps>(
@@ -15,17 +22,23 @@ export const LoginContext = createContext<LoginContextProps>(
 );
 
 export const LoginContextProvider: FC = ({ children }) => {
-  const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
+  const [isLoggedIn, setIsLoggedIn] = useState("");
+
+  useEffect(() => setIsLoggedIn(Cookies.get("login-context") || ""), []);
+
+  useEffect(() => {
+    Cookies.set("login-context", isLoggedIn, { expires: 7 });
+  }, [isLoggedIn]);
 
   function login(data: IUser) {
     if (data.username && data.password) {
-      setIsLoggedIn(true);
+      return Cookies.set("login-context", "logged-in", { expires: 7 });
     }
     return null;
   }
 
   function logout() {
-    setIsLoggedIn(false);
+    return Cookies.remove("login-context");
   }
 
   return (
