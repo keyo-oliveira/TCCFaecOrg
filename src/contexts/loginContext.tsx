@@ -6,17 +6,9 @@ import React, {
   useState,
 } from "react";
 import { isEmptyObject } from "../utils/VerifyEmptyObj";
-import Cookies from "js-cookie";
 import { navigate } from "gatsby";
-interface IUser {
-  username: string;
-  password: string;
-}
-interface LoginContextProps {
-  login: (user: IUser) => void;
-  logout: () => void;
-  isLoggedIn: string;
-}
+import Cookies from "js-cookie";
+import { getLoginService } from "../services/login";
 
 export const LoginContext = createContext<LoginContextProps>(
   {} as LoginContextProps
@@ -31,8 +23,9 @@ export const LoginContextProvider: FC = ({ children }) => {
     Cookies.set("login-context", isLoggedIn, { expires: 7 });
   }, [isLoggedIn]);
 
-  function login(data: IUser) {
-    if (data.username && data.password) {
+  async function login(data: IUser) {
+    const loginData = await getLoginService(data.username, data.password);
+    if (loginData === true) {
       return Cookies.set("login-context", "logged-in", { expires: 7 });
     }
     return null;

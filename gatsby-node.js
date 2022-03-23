@@ -25,7 +25,7 @@ exports.sourceNodes = async ({
       ...oc,
       id: createNodeId(`OcurrencyNodeID${oc.ocurrencyId}`),
       internal: {
-        type: "ocurrencysType",
+        type: "OcurrencyAPI",
         contentDigest: createContentDigest(oc),
       },
     };
