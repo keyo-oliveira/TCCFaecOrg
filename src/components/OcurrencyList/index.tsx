@@ -87,7 +87,7 @@ const OcurrencyList: FunctionComponent<OcurrencyOpen> = ({ ocurrency }) => {
           </div>
         );
       })}
-      <Link className="ocurrency_back-button" to="/">
+      <Link className="ocurrency_back-button" to="/ocurrencys">
         Voltar
       </Link>
     </div>

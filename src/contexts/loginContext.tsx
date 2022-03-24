@@ -33,7 +33,7 @@ export const LoginContextProvider: FC = ({ children }) => {
 
   function logout() {
     Cookies.remove("login-context");
-    return navigate("");
+    return navigate("/");
   }
 
   return (
