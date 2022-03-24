@@ -7,11 +7,10 @@ import "../styles/index.scss";
 import { graphql } from "gatsby";
 import Map from "../components/Map";
 import OcurrencyList from "../components/OcurrencyList";
-import { getOcurrencys } from "../services/ocurrency";
 
 export const query = graphql`
   query ($slug: Int) {
-    allOcurrencyJson(filter: { ocurrencyId: { eq: $slug } }) {
+    allOcurrencyApi(filter: { ocurrencyId: { eq: $slug } }) {
       nodes {
         address
         answerDate
@@ -19,7 +18,6 @@ export const query = graphql`
         caller
         city
         complement
-        dangerous
         details
         generationDate
         longitude
@@ -37,17 +35,14 @@ export const query = graphql`
   }
 `;
 
+//todo review fields on query
+
 const OcurrencyPage = ({ data }: any) => {
   console.log(data);
 
-  const axiosData: Ocurrency | any = useEffect(() => {
-    const newData = getOcurrencys();
-    return newData;
-  }, []);
-
   const center = {
-    lat: data.allOcurrencyJson.nodes.latitude,
-    lng: data.allOcurrencyJson.nodes.longitude,
+    lat: data.allOcurrencyApi.nodes.latitude,
+    lng: data.allOcurrencyApi.nodes.longitude,
   };
   return (
     <>
@@ -57,12 +52,12 @@ const OcurrencyPage = ({ data }: any) => {
           <div className={"container"}>
             {" "}
             <title>
-              {"Ocorrencia: " + data.allOcurrencyJson.nodes.ocurrencyId}
+              {"Ocorrencia: " + data.allOcurrencyApi.nodes.ocurrencyId}
             </title>
             <SideBar>
               <OcurrencyList
-                ocurrency={data.allOcurrencyJson.nodes}
-                OcurrencyFilterId={data.allOcurrencyJson.nodes.ocurrencyId}
+                ocurrency={data.allOcurrencyApi.nodes}
+                OcurrencyFilterId={data.allOcurrencyApi.nodes.ocurrencyId}
               />
             </SideBar>
             <Map center={center} />

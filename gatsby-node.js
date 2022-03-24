@@ -16,9 +16,15 @@ exports.sourceNodes = async ({
       console.log(error.message);
     });
 
-  const ocurrencys = response.data;
+  response.data.map((item) => {
+    Object.keys(item).map((key) => {
+      if (item[key] === null || undefined) {
+        item[key] = "";
+      }
+    });
+  });
 
-  console.log(ocurrencys);
+  const ocurrencys = response.data;
 
   ocurrencys.forEach((oc) => {
     const node = {
@@ -50,7 +56,7 @@ exports.createPages = async ({ actions: { createPage }, graphql }) => {
   const data = await graphql(
     `
       {
-        allOcurrencyJson {
+        allOcurrencyApi {
           nodes {
             ocurrencyId
           }
@@ -65,8 +71,7 @@ exports.createPages = async ({ actions: { createPage }, graphql }) => {
   }
 
   const ocurrencyTemplate = require.resolve("./src/pages/ocurrency.tsx");
-
-  data.data.allOcurrencyJson.nodes.forEach((node) => {
+  data.data.allOcurrencyApi.nodes.forEach((node) => {
     createPage({
       path: `/ocurrency/${node.ocurrencyId}/`,
       component: ocurrencyTemplate,
