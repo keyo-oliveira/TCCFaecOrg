@@ -37,13 +37,18 @@ export const query = graphql`
 
 //todo review fields on query
 
-const OcurrencyPage = ({ data }: any) => {
-  console.log(data);
-
+const OcurrencyPage = ({ data, allOcurrencyApi }: any) => {
+  const latitude = data.allOcurrencyApi.nodes
+    .map((item: any) => item.latitude)
+    .toString();
+  const longitude = data.allOcurrencyApi.nodes
+    .map((item: any) => item.longitude)
+    .toString();
   const center = {
-    lat: data.allOcurrencyApi.nodes.latitude,
-    lng: data.allOcurrencyApi.nodes.longitude,
+    lat: latitude,
+    lng: longitude,
   };
+  console.log(center);
   return (
     <>
       <LoginContextProvider>
@@ -57,7 +62,9 @@ const OcurrencyPage = ({ data }: any) => {
             <SideBar>
               <OcurrencyList
                 ocurrency={data.allOcurrencyApi.nodes}
-                OcurrencyFilterId={data.allOcurrencyApi.nodes.ocurrencyId}
+                OcurrencyFilterId={data.allOcurrencyApi.nodes.map(
+                  (item: any) => item.ocurrencyId
+                )}
               />
             </SideBar>
             <Map center={center} />

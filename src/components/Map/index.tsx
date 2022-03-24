@@ -13,20 +13,14 @@ interface ICenter {
 
 const Map: FC<IMaps> = ({ center }) => {
   const containerStyle = {
-    width: "800px",
-    height: "600px",
+    width: "100%",
+    height: "790px",
   };
 
   const { isLoaded, loadError } = useJsApiLoader({
     id: "google-map-script",
-    googleMapsApiKey: `${process.env.GOOGLE_API_KEY}`,
+    googleMapsApiKey:`${process.env.GOOGLE_API_KEY}`
   });
-
-  center = {
-    lat: center.lat ?? -23.100149,
-    lng: center.lng ?? -46.569521,
-  };
-
   const [map, setMap] = useState(null);
 
   const onLoad = useCallback(function callback(map) {
@@ -46,16 +40,17 @@ const Map: FC<IMaps> = ({ center }) => {
   if (!isLoaded) {
     return <div> Loading map... </div>;
   }
+console.log({lat: center.lat, lng: center.lng})
 
   return isLoaded ? (
     <GoogleMap
       mapContainerStyle={containerStyle}
-      center={center}
-      zoom={6}
+      center={{lat: center.lat, lng: center.lng}}
+      zoom={18}
       onLoad={onLoad}
       onUnmount={onUnmount}
     >
-      <Marker position={center} visible={true}>
+      <Marker position={{lat: center.lat, lng: center.lng}} visible={true}>
         <MapMarkerIcon />
       </Marker>
     </GoogleMap>

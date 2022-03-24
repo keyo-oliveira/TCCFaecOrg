@@ -82,3 +82,15 @@
   color: black;
   font-family: sans-serif;
 }
+
+.ocurrency_back-button {
+  width: 200px;
+  height: 50px;
+  border: 1px solid black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  color: white;
+  background-color: green;
+}
