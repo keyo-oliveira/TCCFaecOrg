@@ -92,5 +92,9 @@
   align-items: center;
   text-decoration: none;
   color: white;
-  background-color: green;
+  background-color: rgb(128, 128, 128);
+  &:hover{
+    border: 1px solid white;
+    background-color: black;
+  }
 }

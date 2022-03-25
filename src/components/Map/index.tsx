@@ -19,8 +19,10 @@ const Map: FC<IMaps> = ({ center }) => {
 
   const { isLoaded, loadError } = useJsApiLoader({
     id: "google-map-script",
-    googleMapsApiKey:`${process.env.GOOGLE_API_KEY}`
+    googleMapsApiKey: `${process.env.GATSBY_GOOGLE_API_KEY}`,
   });
+
+  console.log(process.env.GATSBY_GOOGLE_API_KEY);
   const [map, setMap] = useState(null);
 
   const onLoad = useCallback(function callback(map) {
@@ -40,17 +42,20 @@ const Map: FC<IMaps> = ({ center }) => {
   if (!isLoaded) {
     return <div> Loading map... </div>;
   }
-console.log({lat: center.lat, lng: center.lng})
+  console.log({ lat: center.lat, lng: center.lng });
 
   return isLoaded ? (
     <GoogleMap
       mapContainerStyle={containerStyle}
-      center={{lat: center.lat, lng: center.lng}}
+      center={{ lat: Number(center.lat), lng: Number(center.lng) }}
       zoom={18}
       onLoad={onLoad}
       onUnmount={onUnmount}
     >
-      <Marker position={{lat: center.lat, lng: center.lng}} visible={true}>
+      <Marker
+        position={{ lat: Number(center.lat), lng: Number(center.lng) }}
+        visible={true}
+      >
         <MapMarkerIcon />
       </Marker>
     </GoogleMap>
