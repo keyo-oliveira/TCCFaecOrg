@@ -7,9 +7,27 @@ import "../styles/index.scss";
 import { graphql } from "gatsby";
 import Map from "../components/Map";
 import OcurrencyList from "../components/OcurrencyList";
+import { solveOcurrency } from "../services/solveOcurrency";
 
 export const query = graphql`
-  query ($slug: Int) {
+  query getOcurrencyData($slug: Int) {
+    allPublicAgent {
+      nodes {
+        actArea
+        cep
+        cnpj
+        dateCreation
+        district
+        id
+        name
+        number
+        organization
+        organizationId
+        password
+        username
+        street
+      }
+    }
     allOcurrencyApi(filter: { ocurrencyId: { eq: $slug } }) {
       nodes {
         address
@@ -20,16 +38,17 @@ export const query = graphql`
         complement
         details
         generationDate
-        longitude
+        id
         latitude
-        victims
-        urgency
-        state
-        ocurrencyType
-        ocurrencyId
-        number
-        neighborhood
+        longitude
         manyEnvolved
+        neighborhood
+        number
+        ocurrencyId
+        ocurrencyType
+        state
+        urgency
+        victims
       }
     }
   }
@@ -37,7 +56,7 @@ export const query = graphql`
 
 //todo review fields on query
 
-const OcurrencyPage = ({ data, allOcurrencyApi }: any) => {
+const OcurrencyPage = ({ data }: any) => {
   const latitude = data.allOcurrencyApi.nodes
     .map((item: any) => item.latitude)
     .toString();
@@ -48,7 +67,11 @@ const OcurrencyPage = ({ data, allOcurrencyApi }: any) => {
     lat: latitude,
     lng: longitude,
   };
-  console.log(center);
+
+  const publicAgent = data.allPublicAgent.nodes[0];
+  const answerDate = new Date();
+  const ocurrency = data.allOcurrencyApi.nodes[0];
+
   return (
     <>
       <LoginContextProvider>
@@ -66,6 +89,13 @@ const OcurrencyPage = ({ data, allOcurrencyApi }: any) => {
                   (item: any) => item.ocurrencyId
                 )}
               />
+              <button
+                onClick={() =>
+                  solveOcurrency(ocurrency, publicAgent, answerDate)
+                }
+              >
+                {"Socorro enviado"}
+              </button>
             </SideBar>
             <Map center={center} />
           </div>

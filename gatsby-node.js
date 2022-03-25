@@ -37,6 +37,30 @@ exports.sourceNodes = async ({
     };
     actions.createNode(node);
   });
+
+  const publicAgent = {
+    organizationId: 3,
+    cnpj: "12157159000199",
+    organization: "Policia militar",
+    actArea: "150",
+    name: "34-DP",
+    cep: "12942070",
+    street: " R. Prof. João Antônio Rodrigues",
+    number: "95",
+    district: "Vila Thais",
+    dateCreation: 2022 - 03 - 25,
+    username: process.env.GATSBY_USERNAME,
+    password: process.env.GATSBY_PASSWORD,
+  };
+  const PublicAgentnode = {
+    ...publicAgent,
+    id: createNodeId(`PublicAgent${publicAgent.organizationId}`),
+    internal: {
+      type: "PublicAgent",
+      contentDigest: createContentDigest(publicAgent),
+    },
+  };
+  actions.createNode(PublicAgentnode);
 };
 
 exports.onCreatePage = async ({ page, actions }) => {
