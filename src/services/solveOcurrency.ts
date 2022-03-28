@@ -1,22 +1,17 @@
 import axios from "axios";
 
 export const solveOcurrency = async (
-  ocurrency: Ocurrency,
-  answeredBy: PublicAgent,
-  answerDate: Date
+  ocurrencys: Ocurrency[],
+  answeredBy: PublicAgent
 ) => {
-  const data = {
-    ocurrency,
-    answeredBy,
-    answerDate,
-  };
+  const ocurrency = ocurrencys[0];
+  const response = await axios
+    .put(`http://localhost:5000/api/Ocorrencias/${ocurrency.ocurrencyId}`, {
+      ...ocurrency,
+      answeredBy,
+    })
+    .catch((Error) => console.log(Error));
 
-  console.log(JSON.stringify(data));
-
-  //   const response = await axios.put(
-  //     `http://localhost:5000/api/OrgaosPublicos/api//Ocorrencias/${ocurrency.ocurrencyId}`,
-  //     {}
-  //   );
-  //   console.log(response);
-  //   return response;
+  console.log(response);
+  return response;
 };

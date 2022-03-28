@@ -39,7 +39,6 @@ exports.sourceNodes = async ({
   });
 
   const publicAgent = {
-    organizationId: 3,
     cnpj: "12157159000199",
     organization: "Policia militar",
     actArea: "150",
@@ -48,9 +47,6 @@ exports.sourceNodes = async ({
     street: " R. Prof. João Antônio Rodrigues",
     number: "95",
     district: "Vila Thais",
-    dateCreation: 2022 - 03 - 25,
-    username: process.env.GATSBY_USERNAME,
-    password: process.env.GATSBY_PASSWORD,
   };
   const PublicAgentnode = {
     ...publicAgent,

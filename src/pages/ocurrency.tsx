@@ -13,42 +13,34 @@ export const query = graphql`
   query getOcurrencyData($slug: Int) {
     allPublicAgent {
       nodes {
-        actArea
-        cep
         cnpj
-        dateCreation
-        district
-        id
-        name
-        number
         organization
-        organizationId
-        password
-        username
+        actArea
+        name
+        cep
         street
+        number
+        district
       }
-    }
+    }    
     allOcurrencyApi(filter: { ocurrencyId: { eq: $slug } }) {
       nodes {
-        address
-        answerDate
-        answeredBy
-        caller
-        city
-        complement
-        details
-        generationDate
-        id
-        latitude
-        longitude
-        manyEnvolved
-        neighborhood
-        number
         ocurrencyId
         ocurrencyType
-        state
-        urgency
+        manyEnvolved
         victims
+        generationDate
+        latitude
+        longitude
+        city
+        state
+        address
+        number
+        complement
+        details
+        answerDate
+        neighborhood
+        urgency
       }
     }
   }
@@ -70,7 +62,7 @@ const OcurrencyPage = ({ data }: any) => {
 
   const publicAgent = data.allPublicAgent.nodes[0];
   const answerDate = new Date();
-  const ocurrency = data.allOcurrencyApi.nodes[0];
+  const ocurrency = data.allOcurrencyApi.nodes;
 
   return (
     <>
@@ -91,7 +83,7 @@ const OcurrencyPage = ({ data }: any) => {
               />
               <button
                 onClick={() =>
-                  solveOcurrency(ocurrency, publicAgent, answerDate)
+                  solveOcurrency(ocurrency, publicAgent)
                 }
               >
                 {"Socorro enviado"}
