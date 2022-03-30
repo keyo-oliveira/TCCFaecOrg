@@ -9411,6 +9411,11 @@ url-parse-lax@^3.0.0:
   dependencies:
     prepend-http "^2.0.0"
 
+use-sse@^2.0.1:
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/use-sse/-/use-sse-2.0.1.tgz#8c4c389d310aa878f8b61c4ecd47a2c5d6f4cfd5"
+  integrity sha512-fsq+7VklgNiHEU2FqpI/DijlX5DoveOFtyazrA/8vXuvzf5lPyXRWcSWDZef6NsKdh9cqtIfKD7rMkgcmFHxUA==
+
 use@^3.1.0:
   version "3.1.1"
   resolved "https://registry.npmjs.org/use/-/use-3.1.1.tgz"

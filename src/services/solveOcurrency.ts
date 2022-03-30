@@ -12,6 +12,7 @@ export const solveOcurrency = async (
     })
     .catch((Error) => console.log(Error));
 
+  console.log({ ...ocurrency, answeredBy });
   console.log(response);
   return response;
 };

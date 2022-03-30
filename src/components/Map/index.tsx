@@ -22,7 +22,6 @@ const Map: FC<IMaps> = ({ center }) => {
     googleMapsApiKey: `${process.env.GATSBY_GOOGLE_API_KEY}`,
   });
 
-  console.log(process.env.GATSBY_GOOGLE_API_KEY);
   const [map, setMap] = useState(null);
 
   const onLoad = useCallback(function callback(map) {
@@ -42,7 +41,6 @@ const Map: FC<IMaps> = ({ center }) => {
   if (!isLoaded) {
     return <div> Loading map... </div>;
   }
-  console.log({ lat: center.lat, lng: center.lng });
 
   return isLoaded ? (
     <GoogleMap
