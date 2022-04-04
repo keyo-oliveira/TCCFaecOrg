@@ -1,12 +1,13 @@
 /* eslint-disable no-unused-vars */
 
 interface NaturalPerson {
-  Name: string;
-  Cpf: string;
-  Rg: string;
-  Street: string;
-  Cep: string;
-  Number: string;
-  BirthDate: string;
-  District: string;
+  name: string;
+  cpf: string;
+  rg: string;
+  street: string;
+  cep: string;
+  number: string;
+  birthDate: string;
+  district: string;
+  email: string;
 }

@@ -1,12 +1,15 @@
 import classNames from "classnames";
 import { Link } from "gatsby";
-import React, { FunctionComponent } from "react";
+import React, { FunctionComponent, useState } from "react";
+import Caller from "./Caller";
 
 interface OcurrencyOpen {
   ocurrency: Ocurrency;
 }
 
 const OcurrencyList: FunctionComponent<OcurrencyOpen> = ({ ocurrency }) => {
+  const [isCallerOpen, setCallerOpen] = useState(false);
+
   return (
     <div className="ocurrency__container-page">
       <div
@@ -14,7 +17,7 @@ const OcurrencyList: FunctionComponent<OcurrencyOpen> = ({ ocurrency }) => {
           "ocurrency__card gradient",
           ocurrency.urgency === "urgent" && "urgent",
           ocurrency.urgency === "high" && "high",
-          ocurrency.answeredBy != "" || null  && "answered"
+          ocurrency.answeredBy != "" || (null && "answered")
         )}
         key={ocurrency.ocurrencyId}
       >
@@ -78,6 +81,11 @@ const OcurrencyList: FunctionComponent<OcurrencyOpen> = ({ ocurrency }) => {
           </span>
         </div>
       </div>
+      <button onClick={() => setCallerOpen(!isCallerOpen)}>
+        {" "}
+        Chamador da ocorrência{" "}
+      </button>
+      {isCallerOpen ? <Caller props={ocurrency.caller} /> : null}
 
       <Link className="ocurrency_back-button" to="/ocurrencys">
         Voltar
