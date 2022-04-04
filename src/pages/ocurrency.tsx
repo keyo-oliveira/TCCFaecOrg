@@ -52,10 +52,12 @@ export const query = graphql`
 
 const OcurrencyPage = ({ data }: any) => {
   const [axiosData, setAxiosData]: any = useState([]);
+  const url_atual = window.location.href.split("/");
+  const parsedSlug = url_atual[url_atual.length - 1];
 
   const chargeData = useSSE(async () => {
     return await axios
-      .get("http://localhost:5000/api/Ocorrencias")
+      .get(`http://localhost:5000/api/Ocorrencias/${parsedSlug}`)
       .catch((error) => {
         console.log(error.message);
       })
@@ -68,16 +70,10 @@ const OcurrencyPage = ({ data }: any) => {
     chargeData;
   }, 1000);
   console.log("axiosData Estado", axiosData);
-
-  const latitude = axiosData.map((item: any) => item.latitude).toString();
-  const longitude = axiosData.map((item: any) => item.longitude).toString();
   const center = {
-    lat: latitude,
-    lng: longitude,
+    lat: axiosData.latitude,
+    lng: axiosData.longitude,
   };
-
-  const publicAgent = data.allPublicAgent.nodes[0];
-  const ocurrency = axiosData;
 
   return (
     <>
@@ -88,11 +84,12 @@ const OcurrencyPage = ({ data }: any) => {
             {" "}
             <title>{"Ocorrencia: " + axiosData.ocurrencyId}</title>
             <SideBar>
-              <OcurrencyList
-                ocurrency={data.allOcurrencyApi.nodes}
-                OcurrencyFilterId={axiosData.item.ocurrencyId}
-              />
-              <button onClick={() => solveOcurrency(ocurrency, publicAgent)}>
+              <OcurrencyList ocurrency={axiosData} />
+              <button
+                onClick={() =>
+                  solveOcurrency(axiosData, data.allPublicAgent.nodes[0])
+                }
+              >
                 {"Socorro enviado"}
               </button>
             </SideBar>

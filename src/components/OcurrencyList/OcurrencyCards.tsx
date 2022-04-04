@@ -36,7 +36,7 @@ const OcurrencyCards: FunctionComponent<OcurrencyCards> = ({ ocurrency }) => {
                   </span>
                   <span className="ocurrency_type">{props.ocurrencyType}</span>
                 </div>
-                {props.answeredBy != "" && (
+                {props.answeredBy != "" || null && (
                   <div className="ocurrency__answered">
                     <span>Ocorrência Respondida</span>
                   </div>
