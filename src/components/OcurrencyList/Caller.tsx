@@ -1,6 +1,6 @@
 import React, { FunctionComponent } from "react";
 
-const Caller: FunctionComponent<any> = (props) => {
+const Caller: FunctionComponent<any> = ({ props }) => {
   return (
     <div>
       <span>Nome:{props.name ? props.name : ""}</span>

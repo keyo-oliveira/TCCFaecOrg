@@ -8,6 +8,7 @@ import { graphql } from "gatsby";
 import Map from "../components/Map";
 import OcurrencyList from "../components/OcurrencyList";
 import { solveOcurrency } from "../services/solveOcurrency";
+import Caller from "../components/OcurrencyList/Caller";
 
 export const query = graphql`
   query getOcurrency($slug: Int) {
@@ -55,7 +56,7 @@ const OcurrencyPage = ({ data }: any) => {
     lat: data.allOcurrencysJson.nodes[0].latitude,
     lng: data.allOcurrencysJson.nodes[0].longitude,
   };
-  console.log(data)
+  console.log(data);
 
   return (
     <>
