@@ -5,47 +5,54 @@ import { LoginContextProvider } from "../contexts/loginContext";
 import "../styles/index.scss";
 import OcurrencyCards from "../components/OcurrencyList/OcurrencyCards";
 import { graphql } from "gatsby";
-import axios from "axios";
-import { useSSE } from "use-sse";
 
 export const query = graphql`
-  query ($slug: Int) {
-    allOcurrencyApi(filter: { ocurrencyId: { eq: $slug } }) {
+  query getOcurrencys($slug: Int) {
+    allOcurrencysJson(filter: { ocurrencyId: { eq: $slug } }) {
       nodes {
-        answeredBy
-        ocurrencyType
+        address
+        answerDate
+        complement
+        details
+        city
+        generationDate
+        id
+        latitude
+        longitude
+        manyEnvolved
+        neighborhood
+        number
         ocurrencyId
+        ocurrencyType
+        state
+        urgency
+        victims
+        caller {
+          birthDate
+          cep
+          cpf
+          dateCreation
+          district
+          email
+          name
+          number
+          rg
+          street
+          userId
+        }
       }
     }
   }
 `;
 
-const IndexPage = () => {
-  const [axiosData, setAxiosData]: any = useState([]);
-
-  const chargeData = useSSE(async () => {
-    return await axios
-      .get("http://localhost:5000/api/Ocorrencias")
-      .catch((error) => {
-        console.log(error.message);
-      })
-      .then((res: any) => {
-        setAxiosData(res.data);
-      });
-  }, [axiosData]);
-
-  window.setInterval(() => {
-    chargeData;
-  }, 1000);
-  console.log("axiosData Estado", axiosData);
-
+const IndexPage = ({ data }) => {
   return (
     <>
       <LoginContextProvider>
         <main>
           <Header pageTitle="FAEC" />
           <div className={"container"}>
-            <OcurrencyCards ocurrency={axiosData} />
+            <OcurrencyCards ocurrency={data.allOcurrencysJson.nodes} />
           </div>
           <Footer />
         </main>

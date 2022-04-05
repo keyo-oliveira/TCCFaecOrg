@@ -3,41 +3,12 @@
  *
  * See: https://www.gatsbyjs.com/docs/node-apis/
  */
-const axios = require("axios");
 
 exports.sourceNodes = async ({
   actions,
   createNodeId,
   createContentDigest,
 }) => {
-  const response = await axios
-    .get("http://localhost:5000/api/Ocorrencias")
-    .catch((error) => {
-      console.log(error.message);
-    });
-
-  response.data.map((item) => {
-    Object.keys(item).map((key) => {
-      if (item[key] === null || undefined) {
-        item[key] = "";
-      }
-    });
-  });
-
-  const ocurrencys = response.data;
-
-  ocurrencys.forEach((oc) => {
-    const node = {
-      ...oc,
-      id: createNodeId(`OcurrencyNodeID${oc.ocurrencyId}`),
-      internal: {
-        type: "OcurrencyAPI",
-        contentDigest: createContentDigest(oc),
-      },
-    };
-    actions.createNode(node);
-  });
-
   const publicAgent = {
     cnpj: "12157159000199",
     organization: "Policia militar",
@@ -47,6 +18,8 @@ exports.sourceNodes = async ({
     street: " R. Prof. João Antônio Rodrigues",
     number: "95",
     district: "Vila Thais",
+    username: "user",
+    password: "password",
   };
   const PublicAgentnode = {
     ...publicAgent,
@@ -76,7 +49,7 @@ exports.createPages = async ({ actions: { createPage }, graphql }) => {
   const data = await graphql(
     `
       {
-        allOcurrencyApi {
+        allOcurrencysJson {
           nodes {
             ocurrencyId
           }
@@ -91,7 +64,7 @@ exports.createPages = async ({ actions: { createPage }, graphql }) => {
   }
 
   const ocurrencyTemplate = require.resolve("./src/pages/ocurrency.tsx");
-  data.data.allOcurrencyApi.nodes.forEach((node) => {
+  data.data.allOcurrencysJson.nodes.forEach((node) => {
     createPage({
       path: `/ocurrency/${node.ocurrencyId}/`,
       component: ocurrencyTemplate,

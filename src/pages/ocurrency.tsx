@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import SideBar from "../components/SideBar";
@@ -8,41 +8,41 @@ import { graphql } from "gatsby";
 import Map from "../components/Map";
 import OcurrencyList from "../components/OcurrencyList";
 import { solveOcurrency } from "../services/solveOcurrency";
-import axios from "axios";
-import { useSSE } from "use-sse";
 
 export const query = graphql`
-  query getOcurrencyData($slug: Int) {
-    allPublicAgent {
+  query getOcurrency($slug: Int) {
+    allOcurrencysJson(filter: { ocurrencyId: { eq: $slug } }) {
       nodes {
-        cnpj
-        organization
-        actArea
-        name
-        cep
-        street
-        number
-        district
-      }
-    }
-    allOcurrencyApi(filter: { ocurrencyId: { eq: $slug } }) {
-      nodes {
-        ocurrencyId
-        ocurrencyType
-        manyEnvolved
-        victims
-        generationDate
-        latitude
-        longitude
-        city
-        state
         address
-        number
+        answerDate
         complement
         details
-        answerDate
+        city
+        generationDate
+        id
+        latitude
+        longitude
+        manyEnvolved
         neighborhood
+        number
+        ocurrencyId
+        ocurrencyType
+        state
         urgency
+        victims
+        caller {
+          birthDate
+          cep
+          cpf
+          dateCreation
+          district
+          email
+          name
+          number
+          rg
+          street
+          userId
+        }
       }
     }
   }
@@ -51,29 +51,11 @@ export const query = graphql`
 //todo review fields on query
 
 const OcurrencyPage = ({ data }: any) => {
-  const [axiosData, setAxiosData]: any = useState([]);
-  const url_atual = window.location.href.split("/");
-  const parsedSlug = url_atual[url_atual.length - 1];
-
-  const chargeData = useSSE(async () => {
-    return await axios
-      .get(`http://localhost:5000/api/Ocorrencias/${parsedSlug}`)
-      .catch((error) => {
-        console.log(error.message);
-      })
-      .then((res: any) => {
-        setAxiosData(res.data);
-      });
-  }, [axiosData]);
-
-  window.setInterval(() => {
-    chargeData;
-  }, 1000);
-  console.log("axiosData Estado", axiosData);
   const center = {
-    lat: axiosData.latitude,
-    lng: axiosData.longitude,
+    lat: data.allOcurrencysJson.nodes[0].latitude,
+    lng: data.allOcurrencysJson.nodes[0].longitude,
   };
+  console.log(data)
 
   return (
     <>
@@ -82,12 +64,17 @@ const OcurrencyPage = ({ data }: any) => {
           <Header pageTitle="Site Home" />
           <div className={"container"}>
             {" "}
-            <title>{"Ocorrencia: " + axiosData.ocurrencyId}</title>
+            <title>
+              {"Ocorrencia: " + data.allOcurrencysJson.nodes.ocurrencyId}
+            </title>
             <SideBar>
-              <OcurrencyList ocurrency={axiosData} />
+              <OcurrencyList ocurrency={data.allOcurrencysJson.nodes[0]} />
               <button
                 onClick={() =>
-                  solveOcurrency(axiosData, data.allPublicAgent.nodes[0])
+                  solveOcurrency(
+                    data.allOcurrencysJson.nodes[0],
+                    data.allPublicAgent.nodes[0]
+                  )
                 }
               >
                 {"Socorro enviado"}
