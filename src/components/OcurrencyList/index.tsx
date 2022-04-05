@@ -1,7 +1,6 @@
 import classNames from "classnames";
 import { Link } from "gatsby";
 import React, { FunctionComponent, useState } from "react";
-import { isPropertySignature } from "typescript";
 import Caller from "./Caller";
 
 interface OcurrencyOpen {
@@ -10,6 +9,7 @@ interface OcurrencyOpen {
 
 const OcurrencyList: FunctionComponent<OcurrencyOpen> = ({ ocurrency }) => {
   const [isCallerOpen, setCallerOpen] = useState(false);
+  const [answered, setAnswer] = useState("");
 
   return (
     <div className="ocurrency__container-page">
@@ -18,9 +18,9 @@ const OcurrencyList: FunctionComponent<OcurrencyOpen> = ({ ocurrency }) => {
           "ocurrency__card gradient",
           ocurrency.urgency === "urgent" && "urgent",
           ocurrency.urgency === "high" && "high",
-          ocurrency.answeredBy != "" || (null && "answered")
+          ocurrency.answeredBy != "" || (null && "answered"),
+          answered
         )}
-        key={ocurrency.ocurrencyId}
       >
         <div className="ocurrency__title">
           <span>{ocurrency.ocurrencyId + " " + ocurrency.urgency}</span>
@@ -82,6 +82,12 @@ const OcurrencyList: FunctionComponent<OcurrencyOpen> = ({ ocurrency }) => {
           </span>
         </div>
       </div>
+      <button
+        className={classNames("ocurrency__solve-button" , answered)}
+        onClick={() => setAnswer("answered")}
+      >
+        {"Marcar como socorrida"}
+      </button>
       {ocurrency.caller != null ? (
         <button
           className={"ocurrency_caller-button"}

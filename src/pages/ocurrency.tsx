@@ -52,12 +52,6 @@ export const query = graphql`
 //todo review fields on query
 
 const OcurrencyPage = ({ data }: any) => {
-  const center = {
-    lat: data.allOcurrencysJson.nodes[0].latitude,
-    lng: data.allOcurrencysJson.nodes[0].longitude,
-  };
-  console.log(data);
-
   return (
     <>
       <LoginContextProvider>
@@ -70,18 +64,11 @@ const OcurrencyPage = ({ data }: any) => {
             </title>
             <SideBar>
               <OcurrencyList ocurrency={data.allOcurrencysJson.nodes[0]} />
-              <button className="ocurrency__solve-button"
-                onClick={() =>
-                  solveOcurrency(
-                    data.allOcurrencysJson.nodes[0],
-                    data.allPublicAgent.nodes[0]
-                  )
-                }
-              >
-                {"Marcar como socorrida"}
-              </button>
             </SideBar>
-            <Map center={center} />
+            <Map
+              lat={data.allOcurrencysJson.nodes[0].latitude}
+              lng={data.allOcurrencysJson.nodes[0].longitude}
+            />
           </div>
           <Footer />
         </main>

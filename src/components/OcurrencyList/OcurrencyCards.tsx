@@ -22,7 +22,7 @@ const OcurrencyCards: FunctionComponent<OcurrencyCards> = ({ ocurrency }) => {
                   "ocurrency__card gradient",
                   props.urgency === "urgent" && "urgent",
                   props.urgency === "high" && "high",
-                  props.answeredBy != "" || null && "answered"
+                  props.answeredBy != "" || (null && "answered")
                 )}
               >
                 <div>
@@ -36,11 +36,12 @@ const OcurrencyCards: FunctionComponent<OcurrencyCards> = ({ ocurrency }) => {
                   </span>
                   <span className="ocurrency_type">{props.ocurrencyType}</span>
                 </div>
-                {props.answeredBy != "" || null && (
-                  <div className="ocurrency__answered">
-                    <span>Ocorrência Respondida</span>
-                  </div>
-                )}
+                {props.answeredBy != "" ||
+                  (null && (
+                    <div className="ocurrency__answered">
+                      <span>Ocorrência Respondida</span>
+                    </div>
+                  ))}
               </div>
             </Link>
           </div>

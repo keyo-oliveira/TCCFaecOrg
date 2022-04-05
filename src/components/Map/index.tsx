@@ -3,15 +3,11 @@ import { GoogleMap, useJsApiLoader, Marker } from "@react-google-maps/api";
 import MapMarkerIcon from "../icons/MapMarkerIcon";
 
 interface IMaps {
-  center: ICenter;
-}
-
-interface ICenter {
   lat: number;
   lng: number;
 }
 
-const Map: FC<IMaps> = ({ center }) => {
+const Map: FC<IMaps> = ({ lat, lng }) => {
   const containerStyle = {
     width: "100%",
     height: "790px",
@@ -42,20 +38,15 @@ const Map: FC<IMaps> = ({ center }) => {
     return <div> Loading map... </div>;
   }
 
-  console.log({ lat: Number(center.lat), lng: Number(center.lng) });
-
   return isLoaded ? (
     <GoogleMap
       mapContainerStyle={containerStyle}
-      center={{ lat: Number(center.lat), lng: Number(center.lng) }}
+      center={{ lat: Number(lat), lng: Number(lng) }}
       zoom={9}
       onLoad={onLoad}
       onUnmount={onUnmount}
     >
-      <Marker
-        position={{ lat: Number(center.lat), lng: Number(center.lng) }}
-        visible={true}
-      >
+      <Marker position={{ lat: Number(lat), lng: Number(lng) }} visible={true}>
         <MapMarkerIcon />
       </Marker>
     </GoogleMap>
