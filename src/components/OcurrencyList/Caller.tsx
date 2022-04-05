@@ -1,17 +1,45 @@
 import React, { FunctionComponent } from "react";
 
 const Caller: FunctionComponent<any> = ({ props }) => {
+
+  console.log(props)
   return (
-    <div>
-      <span>Nome:{props.name ? props.name : ""}</span>
-      <span>CPF:{props.cpf ? props.cpf : ""}</span>
-      <span>RG:{props.rg ? props.rg : ""}</span>
-      <span>Data Nasc:{props.birthDate ? props.birthDate : ""}</span>
-      <span>Cep:{props.cep ? props.cep : ""}</span>
-      <span>Rua:{props.street ? props.street : ""}</span>
-      <span>Número:{props.number ? props.number : ""}</span>
-      <span>Bairro:{props.district ? props.distric : ""}</span>
-      <span>E-mail:{props.email ? props.email : ""}</span>
+    <div className="caller__container">
+      <div className="caller_info">
+        Nome:<span>{props.name}</span>
+      </div>
+      <div className="caller_info">
+        CPF:
+        <span>{props.cpf ? props.cpf : ""}</span>
+      </div>
+      <div>
+        RG:
+        <span>{props.rg ? props.rg : ""}</span>
+      </div>
+      <div className="caller_info">
+        Data Nasc:
+        <span>{props.birthDate ? props.birthDate : ""}</span>
+      </div>
+      <div className="caller_info">
+        Cep:
+        <span>{props.cep ? props.cep : ""}</span>
+      </div>
+      <div className="caller_info">
+        Rua:
+        <span>{props.street ? props.street : ""}</span>
+      </div>
+      <div className="caller_info">
+        Número:
+        <span>{props.number ? props.number : ""}</span>
+      </div>
+      <div className="caller_info">
+        Bairro:
+        <span>{props.district ? props.district : ""}</span>
+      </div>
+      <div className="caller_info">
+        E-mail:
+        <span>{props.email ? props.email : ""}</span>
+      </div>
     </div>
   );
 };

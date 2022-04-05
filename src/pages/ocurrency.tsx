@@ -70,7 +70,7 @@ const OcurrencyPage = ({ data }: any) => {
             </title>
             <SideBar>
               <OcurrencyList ocurrency={data.allOcurrencysJson.nodes[0]} />
-              <button
+              <button className="ocurrency__solve-button"
                 onClick={() =>
                   solveOcurrency(
                     data.allOcurrencysJson.nodes[0],
@@ -78,7 +78,7 @@ const OcurrencyPage = ({ data }: any) => {
                   )
                 }
               >
-                {"Socorro enviado"}
+                {"Marcar como socorrida"}
               </button>
             </SideBar>
             <Map center={center} />

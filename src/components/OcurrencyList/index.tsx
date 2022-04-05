@@ -1,6 +1,7 @@
 import classNames from "classnames";
 import { Link } from "gatsby";
 import React, { FunctionComponent, useState } from "react";
+import { isPropertySignature } from "typescript";
 import Caller from "./Caller";
 
 interface OcurrencyOpen {
@@ -81,12 +82,18 @@ const OcurrencyList: FunctionComponent<OcurrencyOpen> = ({ ocurrency }) => {
           </span>
         </div>
       </div>
-      <button onClick={() => setCallerOpen(!isCallerOpen)}>
-        {" "}
-        Chamador da ocorrência{" "}
-      </button>
+      {ocurrency.caller != null ? (
+        <button
+          className={"ocurrency_caller-button"}
+          onClick={() => setCallerOpen(!isCallerOpen)}
+        >
+          {" "}
+          Chamador da ocorrência{" "}
+        </button>
+      ) : (
+        "ocorrência anônima"
+      )}
       {isCallerOpen ? <Caller props={ocurrency.caller} /> : null}
-
       <Link className="ocurrency_back-button" to="/ocurrencys">
         Voltar
       </Link>

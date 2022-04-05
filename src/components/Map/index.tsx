@@ -42,11 +42,13 @@ const Map: FC<IMaps> = ({ center }) => {
     return <div> Loading map... </div>;
   }
 
+  console.log({ lat: Number(center.lat), lng: Number(center.lng) });
+
   return isLoaded ? (
     <GoogleMap
       mapContainerStyle={containerStyle}
       center={{ lat: Number(center.lat), lng: Number(center.lng) }}
-      zoom={18}
+      zoom={9}
       onLoad={onLoad}
       onUnmount={onUnmount}
     >
