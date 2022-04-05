@@ -2,9 +2,8 @@
   width: 100%;
   height: 100%;
   padding: 15px 0;
-  display: flex;
-  align-items: center;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: auto auto auto auto;
   gap: 10px;
 
   & span {
@@ -17,7 +16,31 @@
   & .ocurrency_item-type {
     font-weight: normal;
     font-size: 16px;
-    color: darkblue;
+    color: rgb(255, 255, 255);
+    text-align: start;
+  }
+}
+
+.ocurrency__container-page {
+  width: 100%;
+  height: 100%;
+  padding: 15px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 10px;
+  & span {
+    padding: 5px;
+    text-align: start;
+    font-size: 14px;
+    font-weight: bold;
+  }
+
+  & .ocurrency_item-type {
+    font-weight: normal;
+    font-size: 16px;
+    color: rgb(255, 255, 255);
     text-align: start;
   }
 }
@@ -47,19 +70,42 @@
   flex-direction: column;
   padding: 20px;
   width: 300px;
+  margin: 0 auto;
   text-decoration: none;
   &.answered {
     opacity: 0.5;
   }
 }
 
+.ocurrency__solve-button {
+  width: 200px;
+  height: 50px;
+  border: 1px solid rgb(255, 0, 0);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  color: white;
+  background-color: rgb(255, 0, 0);
+  cursor: pointer;
+  margin: 0 auto;
+  &:hover {
+    border: 1px solid white;
+    background-color: rgb(4, 0, 255);
+  }
+  &.answered {
+    border: 1px solid gray;
+    background-color: gray;
+    color: rgb(75, 75, 75);
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}
+
 .gradient {
   background-image: radial-gradient(transparent, #77f373);
   border: 3px solid #77f373;
-  &.answered {
-    background-image: radial-gradient(transparent, gray);
-    border: 3px solid gray;
-  }
+
   &.urgent {
     background-image: radial-gradient(transparent, red);
     border: 3px solid red;
@@ -72,6 +118,10 @@
     background-image: radial-gradient(transparent, blue);
     border: 3px solid blue;
   }
+  &.answered {
+    background-image: radial-gradient(transparent, gray);
+    border: 3px solid gray;
+  }
 }
 
 .ocurrency__link {
@@ -81,4 +131,21 @@
   text-decoration: none;
   color: black;
   font-family: sans-serif;
+}
+
+.ocurrency_back-button,
+.ocurrency_caller-button {
+  width: 200px;
+  height: 50px;
+  border: 1px solid black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  color: white;
+  background-color: rgb(46, 83, 28);
+  &:hover {
+    border: 1px solid white;
+    background-color: black;
+  }
 }

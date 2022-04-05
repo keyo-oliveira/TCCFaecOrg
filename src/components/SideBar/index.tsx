@@ -1,13 +1,19 @@
 import React, { FunctionComponent, useState } from "react";
+import { useLogin } from "../../contexts/loginContext";
 import OpenSideBarIcon from "../icons/SideBarOpen";
 import "./styles.scss";
 
 interface ISideBar {}
 
 const SideBar: FunctionComponent<ISideBar> = ({ children }) => {
-  const [sidebar, setSidebar] = useState(false);
+  const [sidebar, setSidebar] = useState(true);
+  const { isLoggedIn } = useLogin();
 
   const showSidebar = () => setSidebar(!sidebar);
+
+  if (!isLoggedIn) {
+    return null;
+  }
 
   if (!sidebar) {
     return (

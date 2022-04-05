@@ -3,29 +3,20 @@ import { GoogleMap, useJsApiLoader, Marker } from "@react-google-maps/api";
 import MapMarkerIcon from "../icons/MapMarkerIcon";
 
 interface IMaps {
-  center: ICenter;
-}
-
-interface ICenter {
   lat: number;
   lng: number;
 }
 
-const Map: FC<IMaps> = ({ center }) => {
+const Map: FC<IMaps> = ({ lat, lng }) => {
   const containerStyle = {
-    width: "800px",
-    height: "600px",
+    width: "100%",
+    height: "790px",
   };
 
   const { isLoaded, loadError } = useJsApiLoader({
     id: "google-map-script",
-    googleMapsApiKey: `${process.env.GOOGLE_API_KEY}`,
+    googleMapsApiKey: `${process.env.GATSBY_GOOGLE_API_KEY}`,
   });
-
-  center = {
-    lat: center.lat ?? -23.100149,
-    lng: center.lng ?? -46.569521,
-  };
 
   const [map, setMap] = useState(null);
 
@@ -50,12 +41,12 @@ const Map: FC<IMaps> = ({ center }) => {
   return isLoaded ? (
     <GoogleMap
       mapContainerStyle={containerStyle}
-      center={center}
-      zoom={6}
+      center={{ lat: Number(lat), lng: Number(lng) }}
+      zoom={9}
       onLoad={onLoad}
       onUnmount={onUnmount}
     >
-      <Marker position={center} visible={true}>
+      <Marker position={{ lat: Number(lat), lng: Number(lng) }} visible={true}>
         <MapMarkerIcon />
       </Marker>
     </GoogleMap>

@@ -4,7 +4,33 @@
  * See: https://www.gatsbyjs.com/docs/node-apis/
  */
 
-const { Component } = require("react");
+exports.sourceNodes = async ({
+  actions,
+  createNodeId,
+  createContentDigest,
+}) => {
+  const publicAgent = {
+    cnpj: "12157159000199",
+    organization: "Policia militar",
+    actArea: "150",
+    name: "34-DP",
+    cep: "12942070",
+    street: " R. Prof. João Antônio Rodrigues",
+    number: "95",
+    district: "Vila Thais",
+    username: "user",
+    password: "password",
+  };
+  const PublicAgentnode = {
+    ...publicAgent,
+    id: createNodeId(`PublicAgent${publicAgent.organizationId}`),
+    internal: {
+      type: "PublicAgent",
+      contentDigest: createContentDigest(publicAgent),
+    },
+  };
+  actions.createNode(PublicAgentnode);
+};
 
 exports.onCreatePage = async ({ page, actions }) => {
   const { createPage } = actions;
@@ -23,9 +49,9 @@ exports.createPages = async ({ actions: { createPage }, graphql }) => {
   const data = await graphql(
     `
       {
-        allOcurrencyJson {
+        allOcurrencysJson {
           nodes {
-            OcurrencyId
+            ocurrencyId
           }
         }
       }
@@ -38,13 +64,12 @@ exports.createPages = async ({ actions: { createPage }, graphql }) => {
   }
 
   const ocurrencyTemplate = require.resolve("./src/pages/ocurrency.tsx");
-
-  data.data.allOcurrencyJson.nodes.forEach((node) => {
+  data.data.allOcurrencysJson.nodes.forEach((node) => {
     createPage({
-      path: `/ocurrency/${node.OcurrencyId}/`,
+      path: `/ocurrency/${node.ocurrencyId}/`,
       component: ocurrencyTemplate,
       context: {
-        slug: node.OcurrencyId,
+        slug: node.ocurrencyId,
       },
     });
   });

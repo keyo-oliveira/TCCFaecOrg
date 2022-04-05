@@ -4,6 +4,7 @@ module.exports = {
     title: "FrontEndOrgaoPublico",
   },
   plugins: [
+    "gatsby-node-helpers",
     {
       resolve: `gatsby-source-filesystem`,
       options: {

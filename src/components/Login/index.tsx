@@ -9,13 +9,10 @@ import "./styles.scss";
 // eslint-disable-next-line react/prop-types
 const Login = () => {
   const { register, handleSubmit } = useForm();
-  const { login, isLoggedIn } = useLogin();
+  const { login } = useLogin();
   const onSubmit = (data: any) => {
     login(data);
-    if (!isLoggedIn) {
-      navigate("/");
-    }
-    navigate("/");
+    navigate("/ocurrencys");
   };
 
   return (

@@ -15,32 +15,33 @@ const OcurrencyCards: FunctionComponent<OcurrencyCards> = ({ ocurrency }) => {
           <div className="ocurrency__wrapper">
             <Link
               className="ocurrency__link"
-              to={"/ocurrency/" + props.OcurrencyId}
+              to={"/ocurrency/" + props.ocurrencyId}
             >
               <div
                 className={classNames(
                   "ocurrency__card gradient",
-                  props.Urgency === "urgent" && "urgent",
-                  props.Urgency === "high" && "high",
-                  props.AnsweredBy != "" && "answered"
+                  props.urgency === "urgent" && "urgent",
+                  props.urgency === "high" && "high",
+                  props.answeredBy != "" || (null && "answered")
                 )}
               >
                 <div>
                   <span className="ocurrency-title"> Urgência: </span>
-                  <span className="ocurrency-urgency">{props.Urgency}</span>
+                  <span className="ocurrency-urgency">{props.urgency}</span>
                 </div>
                 <div>
                   <span className="ocurrency_title-ocurrency">Ocorrencia:</span>
                   <span className="ocurrency_id">
-                    {props.OcurrencyId + "-"}
+                    {props.ocurrencyId + "-"}
                   </span>
-                  <span className="ocurrency_type">{props.OcurrencyType}</span>
+                  <span className="ocurrency_type">{props.ocurrencyType}</span>
                 </div>
-                {props.AnsweredBy != "" && (
-                  <div className="ocurrency__answered">
-                    <span>Ocorrência Respondida</span>
-                  </div>
-                )}
+                {props.answeredBy != "" ||
+                  (null && (
+                    <div className="ocurrency__answered">
+                      <span>Ocorrência Respondida</span>
+                    </div>
+                  ))}
               </div>
             </Link>
           </div>

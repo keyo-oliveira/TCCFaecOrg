@@ -1,17 +1,13 @@
-import React from "react";
-import Header from "../components/Header";
+import React, { useState } from "react";
+import Header from "../components/Header/";
 import Footer from "../components/Footer";
-import SideBar from "../components/SideBar";
 import { LoginContextProvider } from "../contexts/loginContext";
 import "../styles/index.scss";
+import OcurrencyCards from "../components/OcurrencyList/OcurrencyCards";
 import { graphql } from "gatsby";
-import Map from "../components/Map";
-import OcurrencyList from "../components/OcurrencyList";
-import { solveOcurrency } from "../services/solveOcurrency";
-import Caller from "../components/OcurrencyList/Caller";
 
 export const query = graphql`
-  query getOcurrency($slug: Int) {
+  query getOcurrencys($slug: Int) {
     allOcurrencysJson(filter: { ocurrencyId: { eq: $slug } }) {
       nodes {
         address
@@ -49,26 +45,14 @@ export const query = graphql`
   }
 `;
 
-//todo review fields on query
-
-const OcurrencyPage = ({ data }: any) => {
+const IndexPage = ({ data }) => {
   return (
     <>
       <LoginContextProvider>
         <main>
-          <Header pageTitle="Site Home" />
+          <Header pageTitle="FAEC" />
           <div className={"container"}>
-            {" "}
-            <title>
-              {"Ocorrencia: " + data.allOcurrencysJson.nodes.ocurrencyId}
-            </title>
-            <SideBar>
-              <OcurrencyList ocurrency={data.allOcurrencysJson.nodes[0]} />
-            </SideBar>
-            <Map
-              lat={data.allOcurrencysJson.nodes[0].latitude}
-              lng={data.allOcurrencysJson.nodes[0].longitude}
-            />
+            <OcurrencyCards ocurrency={data.allOcurrencysJson.nodes} />
           </div>
           <Footer />
         </main>
@@ -77,4 +61,4 @@ const OcurrencyPage = ({ data }: any) => {
   );
 };
 
-export default OcurrencyPage;
+export default IndexPage;

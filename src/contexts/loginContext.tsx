@@ -1,31 +1,39 @@
-import React, { createContext, FC, useContext, useState } from "react";
+import React, {
+  createContext,
+  FC,
+  useContext,
+  useEffect,
+  useState,
+} from "react";
 import { isEmptyObject } from "../utils/VerifyEmptyObj";
-interface IUser {
-  username: string;
-  password: string;
-}
-interface LoginContextProps {
-  login: (user: IUser) => void;
-  logout: () => void;
-  isLoggedIn: boolean;
-}
+import { navigate } from "gatsby";
+import Cookies from "js-cookie";
+import { getLoginService } from "../services/login";
 
 export const LoginContext = createContext<LoginContextProps>(
   {} as LoginContextProps
 );
 
 export const LoginContextProvider: FC = ({ children }) => {
-  const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
+  const [isLoggedIn, setIsLoggedIn] = useState("");
 
-  function login(data: IUser) {
-    if (data.username && data.password) {
-      setIsLoggedIn(true);
+  useEffect(() => setIsLoggedIn(Cookies.get("login-context") || ""), []);
+
+  useEffect(() => {
+    Cookies.set("login-context", isLoggedIn, { expires: 7 });
+  }, [isLoggedIn]);
+
+  async function login(data: IUser) {
+    const loginData = true;
+    if (loginData === true) {
+      return Cookies.set("login-context", "logged-in", { expires: 7 });
     }
     return null;
   }
 
   function logout() {
-    setIsLoggedIn(false);
+    Cookies.remove("login-context");
+    return navigate("/");
   }
 
   return (

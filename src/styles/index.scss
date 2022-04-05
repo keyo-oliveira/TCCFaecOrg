@@ -15,13 +15,30 @@ table {
   border-spacing: 0;
 }
 
+.login__main {
+  width: 100%;
+  display: flex;
+  min-height: 900px;
+  align-items: center;
+  justify-content: center;
+}
+
+.login__container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 500px;
+  height: 600px;
+  opacity: 0.85;
+}
+
 .container {
   font-family: sans-serif;
   background-color: rgb(245, 245, 245);
   font-size: 20px;
   height: 100%;
   text-align: center;
-  margin-left: 13%;
 }
 
 .backgroundColor {
